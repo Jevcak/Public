@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Permutation lookup-Jevcak", "Permutation lookup-Jevcak.pyproj", "{A2709E43-D6B5-4158-84B5-3283F4387B88}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A2709E43-D6B5-4158-84B5-3283F4387B88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2709E43-D6B5-4158-84B5-3283F4387B88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1A1F04A3-AE15-41DC-9269-0130818880F6}
+	EndGlobalSection
+EndGlobal
