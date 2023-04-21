@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Integer solutions-Jevcak", "Integer solutions-Jevcak.pyproj", "{71CA8A9B-A4C3-4BA7-A7BB-3C4BC0B8CBB2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{71CA8A9B-A4C3-4BA7-A7BB-3C4BC0B8CBB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71CA8A9B-A4C3-4BA7-A7BB-3C4BC0B8CBB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8576109F-B1FC-46E8-8C82-D44FF8CBA39D}
+	EndGlobalSection
+EndGlobal
