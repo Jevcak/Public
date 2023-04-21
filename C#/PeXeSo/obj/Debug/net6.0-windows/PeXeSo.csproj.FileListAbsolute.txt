@@ -1,0 +1,17 @@
+C:\Users\START\source\repos\PeXeSo\bin\Debug\net6.0-windows\PeXeSo.exe
+C:\Users\START\source\repos\PeXeSo\bin\Debug\net6.0-windows\PeXeSo.deps.json
+C:\Users\START\source\repos\PeXeSo\bin\Debug\net6.0-windows\PeXeSo.runtimeconfig.json
+C:\Users\START\source\repos\PeXeSo\bin\Debug\net6.0-windows\PeXeSo.dll
+C:\Users\START\source\repos\PeXeSo\bin\Debug\net6.0-windows\PeXeSo.pdb
+C:\Users\START\source\repos\PeXeSo\obj\Debug\net6.0-windows\PeXeSo.csproj.AssemblyReference.cache
+C:\Users\START\source\repos\PeXeSo\obj\Debug\net6.0-windows\PeXeSo.Form1.resources
+C:\Users\START\source\repos\PeXeSo\obj\Debug\net6.0-windows\PeXeSo.csproj.GenerateResource.cache
+C:\Users\START\source\repos\PeXeSo\obj\Debug\net6.0-windows\PeXeSo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\START\source\repos\PeXeSo\obj\Debug\net6.0-windows\PeXeSo.AssemblyInfoInputs.cache
+C:\Users\START\source\repos\PeXeSo\obj\Debug\net6.0-windows\PeXeSo.AssemblyInfo.cs
+C:\Users\START\source\repos\PeXeSo\obj\Debug\net6.0-windows\PeXeSo.csproj.CoreCompileInputs.cache
+C:\Users\START\source\repos\PeXeSo\obj\Debug\net6.0-windows\PeXeSo.dll
+C:\Users\START\source\repos\PeXeSo\obj\Debug\net6.0-windows\refint\PeXeSo.dll
+C:\Users\START\source\repos\PeXeSo\obj\Debug\net6.0-windows\PeXeSo.pdb
+C:\Users\START\source\repos\PeXeSo\obj\Debug\net6.0-windows\PeXeSo.genruntimeconfig.cache
+C:\Users\START\source\repos\PeXeSo\obj\Debug\net6.0-windows\ref\PeXeSo.dll

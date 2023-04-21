@@ -1,0 +1,15 @@
+C:\Users\START\source\repos\dzbany\bin\Debug\net6.0\dzbany.exe
+C:\Users\START\source\repos\dzbany\bin\Debug\net6.0\dzbany.deps.json
+C:\Users\START\source\repos\dzbany\bin\Debug\net6.0\dzbany.runtimeconfig.json
+C:\Users\START\source\repos\dzbany\bin\Debug\net6.0\dzbany.dll
+C:\Users\START\source\repos\dzbany\bin\Debug\net6.0\dzbany.pdb
+C:\Users\START\source\repos\dzbany\obj\Debug\net6.0\dzbany.csproj.AssemblyReference.cache
+C:\Users\START\source\repos\dzbany\obj\Debug\net6.0\dzbany.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\START\source\repos\dzbany\obj\Debug\net6.0\dzbany.AssemblyInfoInputs.cache
+C:\Users\START\source\repos\dzbany\obj\Debug\net6.0\dzbany.AssemblyInfo.cs
+C:\Users\START\source\repos\dzbany\obj\Debug\net6.0\dzbany.csproj.CoreCompileInputs.cache
+C:\Users\START\source\repos\dzbany\obj\Debug\net6.0\dzbany.dll
+C:\Users\START\source\repos\dzbany\obj\Debug\net6.0\refint\dzbany.dll
+C:\Users\START\source\repos\dzbany\obj\Debug\net6.0\dzbany.pdb
+C:\Users\START\source\repos\dzbany\obj\Debug\net6.0\dzbany.genruntimeconfig.cache
+C:\Users\START\source\repos\dzbany\obj\Debug\net6.0\ref\dzbany.dll
