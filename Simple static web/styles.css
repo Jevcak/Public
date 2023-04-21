@@ -1,0 +1,109 @@
+﻿body {
+    background-color: lightsalmon; 
+    text-align:center;
+}
+* {
+    font-family: Brandon Text,Segoe UI,Oxygen-Sans,Ubuntu,Cantarell,sans-serif;
+    color: #0d0e24;
+    margin:0;
+}
+a:hover
+{
+    color:indianred
+}
+div.menu {
+    position: sticky;
+    top: 0px;
+    background-color: rgb(205,133,63);
+    font-weight: 700;
+    font-size: large
+}
+.Nadpis
+{
+    background-color:darksalmon;
+    font-weight:900;
+    border:10px thin salmon;
+    font-size:xx-large
+}
+.Nadpis2 
+{
+    font-weight: 900;
+    font-size:large;
+    text-align:center
+}
+div.Zutaten
+{
+ text-align:center;
+}
+#list1
+{
+    display:inline-block;
+    text-align:left
+}
+ul.list2 {
+    display: inline-block;
+    text-align: left
+}
+table
+{
+    border-collapse:collapse;
+    width:100%
+}
+#table th, #table td
+{
+    border:2px solid #808080;
+    padding:8px;
+    text-align:left
+}
+#table th 
+{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color:coral;
+    color:antiquewhite
+}
+#úvod
+{
+    margin-left:200px;
+    margin-right:200px;
+    margin-bottom:20px;
+    font-size:medium
+}
+footer
+{
+    background-color:#8fce55;
+    position:fixed;
+    padding:10px;   
+    bottom:0;
+    right:0
+}
+footer:hover
+{
+    opacity:0
+}
+div.block
+{
+    display:flex;
+    margin-left:20px;
+    height:100%
+}
+div.block2
+{
+    flex:1;
+}
+section
+{
+    margin-left:100px;
+    margin-right:100px
+}
+section>p
+{
+    font-size:larger;
+    margin-right:150px;
+    margin-left:150px
+}
+#cesnecka
+{
+    font-size: larger;
+}
