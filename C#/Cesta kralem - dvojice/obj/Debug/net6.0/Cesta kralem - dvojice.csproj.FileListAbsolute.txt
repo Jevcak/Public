@@ -1,0 +1,15 @@
+C:\Users\START\Desktop\ZenBook\Programovani\Cesta kralem - dvojice\bin\Debug\net6.0\Cesta kralem - dvojice.exe
+C:\Users\START\Desktop\ZenBook\Programovani\Cesta kralem - dvojice\bin\Debug\net6.0\Cesta kralem - dvojice.deps.json
+C:\Users\START\Desktop\ZenBook\Programovani\Cesta kralem - dvojice\bin\Debug\net6.0\Cesta kralem - dvojice.runtimeconfig.json
+C:\Users\START\Desktop\ZenBook\Programovani\Cesta kralem - dvojice\bin\Debug\net6.0\Cesta kralem - dvojice.dll
+C:\Users\START\Desktop\ZenBook\Programovani\Cesta kralem - dvojice\bin\Debug\net6.0\Cesta kralem - dvojice.pdb
+C:\Users\START\Desktop\ZenBook\Programovani\Cesta kralem - dvojice\obj\Debug\net6.0\Cesta kralem - dvojice.csproj.AssemblyReference.cache
+C:\Users\START\Desktop\ZenBook\Programovani\Cesta kralem - dvojice\obj\Debug\net6.0\Cesta kralem - dvojice.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\START\Desktop\ZenBook\Programovani\Cesta kralem - dvojice\obj\Debug\net6.0\Cesta kralem - dvojice.AssemblyInfoInputs.cache
+C:\Users\START\Desktop\ZenBook\Programovani\Cesta kralem - dvojice\obj\Debug\net6.0\Cesta kralem - dvojice.AssemblyInfo.cs
+C:\Users\START\Desktop\ZenBook\Programovani\Cesta kralem - dvojice\obj\Debug\net6.0\Cesta kralem - dvojice.csproj.CoreCompileInputs.cache
+C:\Users\START\Desktop\ZenBook\Programovani\Cesta kralem - dvojice\obj\Debug\net6.0\Cesta kralem - dvojice.dll
+C:\Users\START\Desktop\ZenBook\Programovani\Cesta kralem - dvojice\obj\Debug\net6.0\refint\Cesta kralem - dvojice.dll
+C:\Users\START\Desktop\ZenBook\Programovani\Cesta kralem - dvojice\obj\Debug\net6.0\Cesta kralem - dvojice.pdb
+C:\Users\START\Desktop\ZenBook\Programovani\Cesta kralem - dvojice\obj\Debug\net6.0\Cesta kralem - dvojice.genruntimeconfig.cache
+C:\Users\START\Desktop\ZenBook\Programovani\Cesta kralem - dvojice\obj\Debug\net6.0\ref\Cesta kralem - dvojice.dll
