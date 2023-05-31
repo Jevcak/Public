@@ -1,6 +1,7 @@
 #include "funshield.h"
 constexpr byte d = 0b10100001;   // d
 enum State {NORMAL, CONF};
+enum ButtonState{PRESSED, HELD, RELEASED};
 constexpr int moduloDigit = 4;
 constexpr byte whiteSpace = 0xFF;
 int GetThePowerOf(int num, int base)
@@ -34,7 +35,7 @@ class Button
     {
       pin = Pin;
     }
-    bool Pressed()
+    ButtonState Pressed()
     {
       bool is_pressed = !digitalRead(pin);
       if (is_pressed & (prev_state == RELEASED))
@@ -50,7 +51,6 @@ class Button
       return HELD;
     }
     private:
-    enum ButtonState{PRESSED, HELD, RELEASED};
     ButtonState prev_state = RELEASED;
 };
 Digit digs[moduloDigit] = { Digit(1), Digit(10), Digit(100), Digit(1000) };
@@ -118,12 +118,21 @@ void loop()
   {
     case NORMAL:
     {
+      if ((Buttons[1].Pressed() == PRESSED) | (Buttons[2].Pressed() == PRESSED))
+      {
+        current = CONF;
+      }
+      display.WhichDigitandWhat(5432);
       break;
+
     }
     case CONF:
     {
-      display.WhichDigitandWhat(5432);
-      break;
+      if (Buttons[0].Pressed() == PRESSED)
+      {
+        current = NORMAL;
+      }
+      display.WhichDigitandWhat(4444);
     }
   }
 }
