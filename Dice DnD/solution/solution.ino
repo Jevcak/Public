@@ -5,6 +5,7 @@ enum ButtonState{PRESSED, HELD, RELEASED, INACTIVE};
 constexpr int moduloDigit = 4;
 constexpr byte whiteSpace = 0xFF;
 bool ledsOn = false;
+bool change = false;
 class Leds 
 {
   public:
@@ -162,8 +163,12 @@ class Dice
       }
       else if (FirstButtonPressed == RELEASED)
       {
-        generate = true;
+        if (change)
+        {
+          generate = true;
+        }
         ledsOn = false;
+        change = true;
       }
     }
     void Generate()
@@ -173,13 +178,14 @@ class Dice
         unsigned long seed = CurrentTime - LastTime;
         randomSeed(seed);
         int temp = 0;
-        result = 0;
+        int temp_sum = 0;
         for (int i = 0; i < NumberOfThrows + 1; i++)
         {
           temp = random(1, Type[WhichType] + 1);
-          result += temp;
+          temp_sum += temp;
         }
         generate = false;
+        result = temp_sum;
       }
     }
     int result;
@@ -188,7 +194,6 @@ class Dice
     unsigned int LastTime;
 };
 State current = CONF;
-State last = CONF;
 Dice dice;
 void setup() 
 {
@@ -212,13 +217,12 @@ void loop()
         current = CONF;
       }
       (ledsOn) ? leds.PatternGo() : leds.Setup();
-      if (last == NORMAL)
+      dice.Throwing();
+      if (change)
       {
-        dice.Throwing();
+       dice.Generate();
       }
-      dice.Generate();
       display.WhichDigitandWhat(dice.result);
-      last = NORMAL;
       break;
     }
     case CONF:
@@ -226,6 +230,7 @@ void loop()
       if (Buttons[0].Pressed() == PRESSED)
       {
         current = NORMAL;
+        change = false;
       }
       if (Buttons[1].Pressed() == PRESSED)
       {
@@ -238,7 +243,6 @@ void loop()
         dice.WhichType %= dice.modTypes;
       }
       display.DisplayConf(dice.NumberOfThrows + 1, dice.Type[dice.WhichType]);
-      last = CONF;
     }
   }
 }
