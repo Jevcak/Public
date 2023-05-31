@@ -1,7 +1,7 @@
 #include "funshield.h"
 constexpr byte d = 0b10100001;   // d
 enum State {NORMAL, CONF};
-enum ButtonState{PRESSED, HELD, RELEASED};
+enum ButtonState{PRESSED, HELD, RELEASED, INACTIVE};
 constexpr int moduloDigit = 4;
 constexpr byte whiteSpace = 0xFF;
 int GetThePowerOf(int num, int base)
@@ -38,12 +38,17 @@ class Button
     ButtonState Pressed()
     {
       bool is_pressed = !digitalRead(pin);
-      if (is_pressed & (prev_state == RELEASED))
+      if (is_pressed && (prev_state == RELEASED) | (prev_state == INACTIVE))
       {
         prev_state = PRESSED;
         return PRESSED;
       }
-      else if (!is_pressed)
+      else if ((!is_pressed) && (prev_state == RELEASED))
+      {
+        prev_state = INACTIVE;
+        return INACTIVE;
+      }
+      else if ((!is_pressed) && (prev_state == PRESSED))
       {
         prev_state = RELEASED;
         return RELEASED;
@@ -114,9 +119,14 @@ class Dice
     void Throwing()
     {
       CurrentTime = millis();
-      if (Buttons[0].Pressed() == PRESSED)
+      ButtonState FirstButtonPressed = Buttons[0].Pressed();
+      if (FirstButtonPressed == PRESSED)
       {
         LastTime = CurrentTime;
+      }
+      else if (FirstButtonPressed == RELEASED)
+      {
+        generate = true;
       }
     }
     int Generate()
