@@ -4,6 +4,40 @@ enum State {NORMAL, CONF};
 enum ButtonState{PRESSED, HELD, RELEASED, INACTIVE};
 constexpr int moduloDigit = 4;
 constexpr byte whiteSpace = 0xFF;
+bool ledsOn = false;
+class Leds 
+{
+  public:
+    int j = 0;
+    void Setup()
+    {
+      for (int i = 0; i < ledArraySize; i++)
+      {
+        pinMode(ledArray[i], OUTPUT);
+        digitalWrite(ledArray[i], OFF);
+      }
+    }
+    void PatternGo()
+    {
+      currentTime = millis();
+      if (currentTime - lastTime >= PERIOD)
+      { 
+        digitalWrite(ledArray[pattern[j]], OFF);
+        j++;
+        j = j % 6;
+        digitalWrite(ledArray[pattern[j]], ON);
+        lastTime += PERIOD;
+      }
+    }
+  private:
+    int ledArray[4] {led1_pin, led2_pin, led3_pin, led4_pin};
+    int pattern[6] {0, 1, 2, 3, 2, 1};
+    unsigned long currentTime;
+    unsigned long lastTime;
+    int PERIOD = 50;
+    int ledArraySize = sizeof(ledArray) / sizeof(ledArray[0]);
+};
+Leds leds;
 int GetThePowerOf(int num, int base)
 {
   int tmp = 0;
@@ -123,13 +157,16 @@ class Dice
       if (FirstButtonPressed == PRESSED)
       {
         LastTime = CurrentTime;
+        leds.j = 0;
+        ledsOn = true;
       }
       else if (FirstButtonPressed == RELEASED)
       {
         generate = true;
+        ledsOn = false;
       }
     }
-    int Generate()
+    void Generate()
     {
       if (generate)
       {
@@ -139,14 +176,13 @@ class Dice
         result = 0;
         for (int i = 0; i < NumberOfThrows + 1; i++)
         {
-          temp = random(1, Type[WhichType]);
+          temp = random(1, Type[WhichType] + 1);
           result += temp;
         }
         generate = false;
       }
-      display.WhichDigitandWhat(result);
     }
-    long result;
+    int result;
   private:
     unsigned int CurrentTime;
     unsigned int LastTime;
@@ -163,7 +199,7 @@ void setup()
   pinMode(latch_pin, OUTPUT);
   pinMode(data_pin, OUTPUT);
   pinMode(clock_pin, OUTPUT);
-  Serial.begin(9600);
+  leds.Setup();
 }
 void loop() 
 {
@@ -174,10 +210,15 @@ void loop()
       if ((Buttons[1].Pressed() == PRESSED) | (Buttons[2].Pressed() == PRESSED))
       {
         current = CONF;
-        last = NORMAL;
       }
-      dice.Throwing();
+      (ledsOn) ? leds.PatternGo() : leds.Setup();
+      if (last == NORMAL)
+      {
+        dice.Throwing();
+      }
       dice.Generate();
+      display.WhichDigitandWhat(dice.result);
+      last = NORMAL;
       break;
     }
     case CONF:
@@ -197,6 +238,7 @@ void loop()
         dice.WhichType %= dice.modTypes;
       }
       display.DisplayConf(dice.NumberOfThrows + 1, dice.Type[dice.WhichType]);
+      last = CONF;
     }
   }
 }
