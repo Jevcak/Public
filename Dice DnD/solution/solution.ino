@@ -1,7 +1,7 @@
 #include "funshield.h"
 constexpr byte d = 0b10100001;   // d
 enum State {NORMAL, CONF};
-enum ButtonState{PRESSED, HELD, RELEASED};
+enum ButtonState{PRESSED, HELD, RELEASED, INACTIVE};
 constexpr int moduloDigit = 4;
 constexpr byte whiteSpace = 0xFF;
 int GetThePowerOf(int num, int base)
@@ -63,14 +63,27 @@ class Display
     {
       digit = which;
     }
-    void DisplayWhatIsGiven(byte WhatToShow[4])
+    void DisplayConf(int throws, int type)
     {
-
+      if (digit == 3)
+      {
+        displayDigit(digits[throws]);
+      }
+      else if (digit == 2)
+      {
+        displayDigit(d);
+      }
+      else
+      {
+        displayDigit(digits[(type/digs[digit].order)%10]);
+      }
+      digit++; 
+      digit %= moduloDigit;
     }
      void WhichDigitandWhat(int number)
     {
       int res = digits[(number/digs[digit].order)%10];
-      if ((number <= digs[digit].order) && (digit >= 2))
+      if ((number <= digs[digit].order) && (digit != 0))
       {
         res = whiteSpace;
       }
@@ -78,9 +91,9 @@ class Display
       digit++; 
       digit %= moduloDigit;
     }
-    void displayDigit( byte Digit)
+    void displayDigit( byte Glyph)
     {
-      shiftOut( data_pin, clock_pin, MSBFIRST, Digit);
+      shiftOut( data_pin, clock_pin, MSBFIRST, Glyph);
       shiftOut( data_pin, clock_pin, MSBFIRST, digs[digit].position);
       digitalWrite( latch_pin, LOW);
       digitalWrite( latch_pin, HIGH);
@@ -92,18 +105,26 @@ Display display(0);
 class Dice
 {
   public:
-    int Throw()
-    {
-      int result;
-      return res;
-    }
-  private:
+    int NumberOfThrows = 0;
     int modThrows = 10;
-    int Type {4, 6, 8, 10, 12, 20, 100};
+    int modTypes = 7;
+    int WhichType = 0;
+    int Type[7] {4, 6, 8, 10, 12, 20, 100};
+    void Throwing()
+    {
+      CurrentTime = millis();
+      if (Buttons[0].Pressed() == PRESSED)
+      {
+        LastTime = CurrentTime;
+      }
+    }
+    int result;
+  private:
     unsigned int CurrentTime;
     unsigned int LastTime;
 };
 State current = CONF;
+State last = CONF;
 Dice dice;
 void setup() 
 {
@@ -124,14 +145,11 @@ void loop()
       if ((Buttons[1].Pressed() == PRESSED) | (Buttons[2].Pressed() == PRESSED))
       {
         current = CONF;
+        last = NORMAL;
       }
-      else if (Buttons[0].Pressed() != PRESSED)
-      {
-        dice.Throw();
-      }
-      display.WhichDigitandWhat();
+      dice.Throwing();
+      display.WhichDigitandWhat(dice.result);
       break;
-
     }
     case CONF:
     {
@@ -139,7 +157,17 @@ void loop()
       {
         current = NORMAL;
       }
-      display.WhichDigitandWhat(4444);
+      if (Buttons[1].Pressed() == PRESSED)
+      {
+        dice.NumberOfThrows++;
+        dice.NumberOfThrows %= dice.modThrows;
+      }
+      if (Buttons[2].Pressed() == PRESSED)
+      {
+        dice.WhichType++;
+        dice.WhichType %= dice.modTypes;
+      }
+      display.DisplayConf(dice.NumberOfThrows, dice.Type[dice.WhichType]);
     }
   }
 }
