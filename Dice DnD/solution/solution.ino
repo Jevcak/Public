@@ -243,6 +243,9 @@ void loop()
         dice.WhichType %= dice.modTypes;
       }
       display.DisplayConf(dice.NumberOfThrows + 1, dice.Type[dice.WhichType]);
+      break;
     }
+    default:
+      break;
   }
 }
