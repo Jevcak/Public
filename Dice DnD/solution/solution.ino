@@ -106,9 +106,10 @@ class Dice
 {
   public:
     int NumberOfThrows = 0;
-    int modThrows = 10;
+    int modThrows = 9;
     int modTypes = 7;
     int WhichType = 0;
+    bool generate = false;
     int Type[7] {4, 6, 8, 10, 12, 20, 100};
     void Throwing()
     {
@@ -118,7 +119,23 @@ class Dice
         LastTime = CurrentTime;
       }
     }
-    int result;
+    int Generate()
+    {
+      if (generate)
+      {
+        unsigned long seed = CurrentTime - LastTime;
+        randomSeed(seed);
+        int temp = 0;
+        result = 0;
+        for (int i = 0; i < NumberOfThrows + 1; i++)
+        {
+          temp = random(1, Type[WhichType]);
+          result += temp;
+        }
+        generate = false;
+      }
+    }
+    long result;
   private:
     unsigned int CurrentTime;
     unsigned int LastTime;
@@ -135,6 +152,7 @@ void setup()
   pinMode(latch_pin, OUTPUT);
   pinMode(data_pin, OUTPUT);
   pinMode(clock_pin, OUTPUT);
+  Serial.begin(9600);
 }
 void loop() 
 {
@@ -148,6 +166,7 @@ void loop()
         last = NORMAL;
       }
       dice.Throwing();
+      dice.Generate();
       display.WhichDigitandWhat(dice.result);
       break;
     }
@@ -167,7 +186,7 @@ void loop()
         dice.WhichType++;
         dice.WhichType %= dice.modTypes;
       }
-      display.DisplayConf(dice.NumberOfThrows, dice.Type[dice.WhichType]);
+      display.DisplayConf(dice.NumberOfThrows + 1, dice.Type[dice.WhichType]);
     }
   }
 }
