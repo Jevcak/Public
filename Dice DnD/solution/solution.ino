@@ -17,6 +17,8 @@ class Leds
         pinMode(ledArray[i], OUTPUT);
         digitalWrite(ledArray[i], OFF);
       }
+      currentTime = millis();
+      lastTime = currentTime;
     }
     void PatternGo()
     {
