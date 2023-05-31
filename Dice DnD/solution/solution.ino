@@ -1,7 +1,7 @@
 #include "funshield.h"
 constexpr byte d = 0b10100001;   // d
 enum State {NORMAL, CONF};
-enum ButtonState{PRESSED, HELD, RELEASED, INACTIVE};
+enum ButtonState{PRESSED, HELD, RELEASED};
 constexpr int moduloDigit = 4;
 constexpr byte whiteSpace = 0xFF;
 int GetThePowerOf(int num, int base)
@@ -134,6 +134,7 @@ class Dice
         }
         generate = false;
       }
+      display.WhichDigitandWhat(result);
     }
     long result;
   private:
@@ -167,7 +168,6 @@ void loop()
       }
       dice.Throwing();
       dice.Generate();
-      display.WhichDigitandWhat(dice.result);
       break;
     }
     case CONF:
