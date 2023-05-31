@@ -92,16 +92,19 @@ Display display(0);
 class Dice
 {
   public:
-    Dice()
+    int Throw()
     {
-
+      int result;
+      return res;
     }
   private:
     int modThrows = 10;
-    enum Type {d4, d6, d8, d10, d12, d20, d100};
+    int Type {4, 6, 8, 10, 12, 20, 100};
+    unsigned int CurrentTime;
+    unsigned int LastTime;
 };
 State current = CONF;
-
+Dice dice;
 void setup() 
 {
   for (int i = 0; i < ButtonsSize; i++) 
@@ -122,7 +125,11 @@ void loop()
       {
         current = CONF;
       }
-      display.WhichDigitandWhat(5432);
+      else if (Buttons[0].Pressed() != PRESSED)
+      {
+        dice.Throw();
+      }
+      display.WhichDigitandWhat();
       break;
 
     }
