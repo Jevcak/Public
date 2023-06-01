@@ -36,8 +36,8 @@ constexpr int positionsCount = 4;
 constexpr unsigned int scrollingInterval = 300;
 constexpr int spacesAfter = 1;
 constexpr int spacesBefore = 3;
-/** 
- * Show chararcter on given position. If character is not letter, empty glyph is displayed instead.
+/**
+ * Show character on given position. If character is not letter, empty glyph is displayed instead.
  * @param ch character to be displayed
  * @param pos position (0 = leftmost)
  */
