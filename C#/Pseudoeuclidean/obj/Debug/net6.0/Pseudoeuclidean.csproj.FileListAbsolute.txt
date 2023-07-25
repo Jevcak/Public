@@ -1,0 +1,15 @@
+C:\Users\START\Desktop\Public\C#\Pseudoeuclidean\bin\Debug\net6.0\Pseudoeuclidean.exe
+C:\Users\START\Desktop\Public\C#\Pseudoeuclidean\bin\Debug\net6.0\Pseudoeuclidean.deps.json
+C:\Users\START\Desktop\Public\C#\Pseudoeuclidean\bin\Debug\net6.0\Pseudoeuclidean.runtimeconfig.json
+C:\Users\START\Desktop\Public\C#\Pseudoeuclidean\bin\Debug\net6.0\Pseudoeuclidean.dll
+C:\Users\START\Desktop\Public\C#\Pseudoeuclidean\bin\Debug\net6.0\Pseudoeuclidean.pdb
+C:\Users\START\Desktop\Public\C#\Pseudoeuclidean\obj\Debug\net6.0\Pseudoeuclidean.csproj.AssemblyReference.cache
+C:\Users\START\Desktop\Public\C#\Pseudoeuclidean\obj\Debug\net6.0\Pseudoeuclidean.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\START\Desktop\Public\C#\Pseudoeuclidean\obj\Debug\net6.0\Pseudoeuclidean.AssemblyInfoInputs.cache
+C:\Users\START\Desktop\Public\C#\Pseudoeuclidean\obj\Debug\net6.0\Pseudoeuclidean.AssemblyInfo.cs
+C:\Users\START\Desktop\Public\C#\Pseudoeuclidean\obj\Debug\net6.0\Pseudoeuclidean.csproj.CoreCompileInputs.cache
+C:\Users\START\Desktop\Public\C#\Pseudoeuclidean\obj\Debug\net6.0\Pseudoeuclidean.dll
+C:\Users\START\Desktop\Public\C#\Pseudoeuclidean\obj\Debug\net6.0\refint\Pseudoeuclidean.dll
+C:\Users\START\Desktop\Public\C#\Pseudoeuclidean\obj\Debug\net6.0\Pseudoeuclidean.pdb
+C:\Users\START\Desktop\Public\C#\Pseudoeuclidean\obj\Debug\net6.0\Pseudoeuclidean.genruntimeconfig.cache
+C:\Users\START\Desktop\Public\C#\Pseudoeuclidean\obj\Debug\net6.0\ref\Pseudoeuclidean.dll
