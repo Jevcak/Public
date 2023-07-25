@@ -10,6 +10,7 @@
         }
         public static int[] DivisionWithRemainder(int a, int b) //return the quotient and the remainder (in this order)
         {
+            //doesn't care about input order
             int q = 1;
             int r;
             int[] arr = new int[2] { 0, 0 };
@@ -49,11 +50,25 @@
         }
         public static int[] BezoutCoeff(int a, int b)
         {
-            int[] array = new int[1] { 0 };
-            int x = 0;
-            int y = 0;
+            int[] array = new int[2] { 0, 0 };
+            int x;
+            int currRem;
             int current = 0;
-            List<int[]> temps = new List<int[]> { new int[4] {a,b,x,y} };
+            x = DivisionWithRemainder(a, b)[0];
+            currRem = DivisionWithRemainder(a,b)[1];
+
+            List<int[]> temps = new List<int[]> { new int[4] {a,b,x,currRem} };
+            while (currRem != 0)
+            {
+                int[] QuotRem = DivisionWithRemainder(temps[current][0], temps[current][1]);
+                temps.Add(new int[4] { temps[current][1], temps[current][3], QuotRem[0], QuotRem[1] });
+                current++;
+                currRem = QuotRem[1];
+            }
+            while (current > 0)
+            {
+                //dodelat zpatecni upravu
+            }
             return array;
         }
         static void Main(string[] args)
