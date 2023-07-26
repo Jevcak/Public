@@ -48,6 +48,17 @@
             }
             else return GCD(b, a);
         }
+        public static bool IsCongruent(int a, int b,int m)
+        {
+            if ((a - b) % m == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         public static int[] BezoutCoeff(int a, int b) //calculates Bezout coefficients for 2 integers, gives a list in the same order in which the integers are given
         {
             int[] array = new int[2] { 0, 0 };
@@ -80,6 +91,14 @@
         }
         static void Main(string[] args)
         {
+            if (IsCongruent(5,7,3))
+            {
+                Console.WriteLine("Is congruent");
+            }
+            else
+            {
+                Console.WriteLine("is not congruent");
+            }
             Console.WriteLine(GCD(PrectiInt(), PrectiInt()));
             int x = PrectiInt();
             int y = PrectiInt();
