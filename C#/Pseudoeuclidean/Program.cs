@@ -89,16 +89,21 @@
             }
             return array;
         }
+        public static int phi(int m)
+        {
+            int res = 0;
+            for (int i = 0; i < m; i++)
+            {
+                if (GCD(i,m) == 1)
+                {
+                    res++;
+                }
+            }
+            return res;
+        }
         static void Main(string[] args)
         {
-            if (IsCongruent(5,7,3))
-            {
-                Console.WriteLine("Is congruent");
-            }
-            else
-            {
-                Console.WriteLine("is not congruent");
-            }
+            Console.WriteLine(phi(13));
             Console.WriteLine(GCD(PrectiInt(), PrectiInt()));
             int x = PrectiInt();
             int y = PrectiInt();
