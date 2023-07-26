@@ -51,30 +51,41 @@
         public static int[] BezoutCoeff(int a, int b)
         {
             int[] array = new int[2] { 0, 0 };
-            int x;
-            int currRem;
-            int current = 0;
-            x = DivisionWithRemainder(a, b)[0];
-            currRem = DivisionWithRemainder(a,b)[1];
-
-            List<int[]> temps = new List<int[]> { new int[4] {a,b,x,currRem} };
-            while (currRem != 0)
+            if (a >= b)
             {
-                int[] QuotRem = DivisionWithRemainder(temps[current][0], temps[current][1]);
-                temps.Add(new int[4] { temps[current][1], temps[current][3], QuotRem[0], QuotRem[1] });
-                current++;
-                currRem = QuotRem[1];
+                int x;
+                int currRem;
+                x = DivisionWithRemainder(a, b)[0];
+                currRem = DivisionWithRemainder(a, b)[1];
+                List<int[]> temps = new List<int[]> { new int[4] { 0, a, 1, 0 }, new int[4] { 0, b, 0, 1 } };
+                int current = 2;
+                while (currRem != 0)
+                {
+                    int[] QuotRem = DivisionWithRemainder(temps[current - 2][1], temps[current - 1][1]);
+                    temps.Add(new int[4] { QuotRem[0], QuotRem[1], temps[current - 2][2] - (temps[current - 1][2] * QuotRem[0]), temps[current - 2][3] - (temps[current - 1][3] * QuotRem[0]) });
+                    current++;
+                    currRem = QuotRem[1];
+                }
+                current-=2;
+                array[0] = temps[current][2];
+                array[1] = temps[current][3];
             }
-            while (current > 0)
+            else
             {
-                //dodelat zpatecni upravu
+                int[] temp = BezoutCoeff(b, a);
+                array[0] = temp[1];
+                array[1] = temp[0];
             }
             return array;
         }
         static void Main(string[] args)
         {
-            Console.WriteLine(GCD(PrectiInt(), PrectiInt()));
-            BezoutCoeff(5, 5);
+            //Console.WriteLine(GCD(PrectiInt(), PrectiInt()));
+            int x = PrectiInt();
+            int y = PrectiInt();
+            int[] res = BezoutCoeff(x, y);
+            Console.WriteLine(res[0]);
+            Console.Write(res[1]);
         }
     }
 }
