@@ -2,7 +2,7 @@
 {
     internal class Program
     {
-        static int PrectiInt()
+        static int PrectiInt() //I should make this part more bulletproof
         {
             string x = Console.ReadLine();
             int y = Convert.ToInt32(x);
@@ -31,7 +31,7 @@
                 return arr;
             }
         }
-        public static int GCD(int a, int b)
+        public static int GCD(int a, int b) //calculates the greatest common divisor of 2 integers
         {
             if (a == 0)
             {
@@ -48,7 +48,7 @@
             }
             else return GCD(b, a);
         }
-        public static int[] BezoutCoeff(int a, int b)
+        public static int[] BezoutCoeff(int a, int b) //calculates Bezout coefficients for 2 integers, gives a list in the same order in which the integers are given
         {
             int[] array = new int[2] { 0, 0 };
             if (a >= b)
@@ -80,7 +80,7 @@
         }
         static void Main(string[] args)
         {
-            //Console.WriteLine(GCD(PrectiInt(), PrectiInt()));
+            Console.WriteLine(GCD(PrectiInt(), PrectiInt()));
             int x = PrectiInt();
             int y = PrectiInt();
             int[] res = BezoutCoeff(x, y);
