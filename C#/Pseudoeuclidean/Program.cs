@@ -1,16 +1,41 @@
-﻿namespace Pseudoeuclidean
+﻿
+
+namespace Pseudoeuclidean
 {
+    class Ctecka
+    {
+        public static int PrectiInt()
+        {
+            int znak = Console.Read();
+            int minuly_znak = znak;
+            int x = 0;
+            while ((znak < '0') || (znak > '9'))
+            {
+                minuly_znak = znak;
+                znak = Console.Read();
+            }
+            while ((znak >= '0') && (znak <= '9'))
+            {
+                x = x * 10 + (znak - '0');
+                znak = Console.Read();
+
+            }
+            if (minuly_znak != '-')
+            {
+                return x;
+            }
+            else
+            {
+                return -x;
+            }
+        }
+    }
     internal class Program
     {
-        static int PrectiInt() //I should make this part more bulletproof
-        {
-            string x = Console.ReadLine();
-            int y = Convert.ToInt32(x);
-            return y;
-        }
         public static int[] DivisionWithRemainder(int a, int b) //return the quotient and the remainder (in this order)
         {
             //doesn't care about input order
+            //doesn't work for negative integers !!! FIX !!!
             int q = 1;
             int r;
             int[] arr = new int[2] { 0, 0 };
@@ -103,11 +128,11 @@
         }
         static void Main(string[] args)
         {
-            Console.WriteLine(phi(13));
-            Console.WriteLine(GCD(PrectiInt(), PrectiInt()));
-            int x = PrectiInt();
-            int y = PrectiInt();
-            int[] res = BezoutCoeff(x, y);
+            //Console.WriteLine(GCD(Ctecka.PrectiInt(), Ctecka.PrectiInt()));
+            int x = Ctecka.PrectiInt();
+            int y = Ctecka.PrectiInt();
+            //int[] res = BezoutCoeff(x, y);
+            int[] res = DivisionWithRemainder(x, y);
             Console.WriteLine(res[0]);
             Console.Write(res[1]);
         }
