@@ -69,6 +69,9 @@ def RotationL(x, y): #x is at the top
     y.right = c
     x.left = a
     x.right = b
+def RotationLR(x,y,z): #  z  at the top
+    RotationL(x,y)     # x   is the left son of z
+    RotationR(z,y)     #  y  is the right son of x
 
 strom = Tree(Node(input()))
 strom.root.insert(input())
