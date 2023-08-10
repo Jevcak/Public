@@ -8,9 +8,9 @@ class Tree:
 
 
 class Node:
-    def __init__(self, key):
+    def __init__(self, key, parent = None):
         self.key = key
-        self.parent = None
+        self.parent = parent
         self.left = None
         self.right = None
         self.balance = self.getBalance()
@@ -42,14 +42,33 @@ class Node:
             if self.right != None:
                 self.right.insert(key)
             else:
-                self.right = Node(key)
+                self.right = Node(key, self)
         elif self.key > key:
             if self.left != None:
                 self.left.insert(key)
             else:
-                self.left = Node(key)
+                self.left = Node(key, self)
         self.balance = self.getBalance()
-
+def RotationR(x, y): #x is at the top
+    a = y.left
+    b = y.right
+    c = x.right
+    y.parent = x.parent
+    x.parent = y
+    y.right = x
+    y.left = a
+    x.left = b
+    x.right = c
+def RotationL(x, y): #x is at the top
+    a = x.left
+    b = y.left
+    c = y.right
+    y.parent = x.parent
+    x.parent = y
+    y.left = x
+    y.right = c
+    x.left = a
+    x.right = b
 
 strom = Tree(Node(input()))
 strom.root.insert(input())
