@@ -170,5 +170,5 @@ for num in Insert:
 for num in Delete:
     root = myTree.delete(root, num)
 
-print("Preorder Traversal after insertion -")
+ print("Preorder Traversal after insertion -")
 preOrder(root)
