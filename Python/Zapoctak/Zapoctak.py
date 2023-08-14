@@ -70,6 +70,16 @@ class Tree:
 
         return root
 
+    def find(self, root, key):
+        if not root:
+            return False
+        elif root.key < key:
+            return self.find(root.right, key)
+        elif root.key > key:
+            return self.find(root.left, key)
+        else:
+            return True
+
     def delete(self, root, key):
         if not root:
             return root
@@ -146,11 +156,20 @@ while True:
 
 myTree = Tree()
 root = None
-nums = [9,10,11,12,13]
- 
-for num in nums:
+Insert = [50, 30, 70, 20, 40, 60, 80, 10, 25, 35, 45, 55, 65, 75, 90, 5, 15]
+Delete =  [40, 45, 10, 20, 25, 35]
+for num in Insert:
     root = myTree.insert(root, num)
 
-root = myTree.delete(root,10)
+for num in Delete:
+    root = myTree.delete(root, num)
+Insert = [38, 48, 42]
+Delete = [30, 35]
+for num in Insert:
+    root = myTree.insert(root, num)
+for num in Delete:
+    root = myTree.delete(root, num)
+
+print(myTree.find(root, 15))
 print("Preorder Traversal after insertion -")
 preOrder(root)
