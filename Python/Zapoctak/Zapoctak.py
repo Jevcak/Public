@@ -28,98 +28,99 @@ class Tree:
     def __init__(self):
         print("Initialization of the tree")
         self.count = 1
-    def insert(self, root, key):
-        if not root:
-            self.count+=1
-            return Node(key)
-        elif root.key == key:
-            return root
-        elif root.key > key:
-            root.left = self.insert(root.left, key)
-        else:
-            root.right = self.insert(root.right, key)
-        root.height = 1 + max(getHeight(root.left),getHeight(root.right))
-        balance = getBalance(root)
-        if balance > 1:
-            if not root.left or key < root.left.key:
-                return RotationL(root)
-            else:
-                root.right = RotationR(root.right)
-                return RotationL(root)
-        if balance < -1:
-            if not root.right or key > root.right.key:
-                return RotationR(root)
-            else:
-                root.left = RotationL(root.left)
-                return RotationR(root)
-            '''
-        if balance > 1 and key < root.left.key:
+def insert(tree, root, key):
+    if not root:
+        tree.count+=1
+        return Node(key)
+    elif root.key == key:
+        return root
+    elif root.key > key:
+        root.left = insert(tree, root.left, key)
+    else:
+        root.right = insert(tree, root.right, key)
+    root.height = 1 + max(getHeight(root.left),getHeight(root.right))
+    balance = getBalance(root)
+    if balance > 1:
+        if key > root.right.key:
             return RotationL(root)
- 
-        if balance < -1 and key > root.right.key:
-            return RotationR(root)
- 
-        if balance > 1 and key > root.left.key:
+        else:
             root.right = RotationR(root.right)
             return RotationL(root)
- 
-        if balance < -1 and key < root.right.key:
+    if balance < -1:
+        if key < root.left.key:
+            return RotationR(root)
+        else:
             root.left = RotationL(root.left)
             return RotationR(root)
         '''
+    if balance > 1 and key < root.left.key:
+        return RotationL(root)
+ 
+    if balance < -1 and key > root.right.key:
+        return RotationR(root)
+ 
+    if balance > 1 and key > root.left.key:
+        root.right = RotationR(root.right)
+        return RotationL(root)
+ 
+    if balance < -1 and key < root.right.key:
+        root.left = RotationL(root.left)
+        return RotationR(root)
+    '''
 
+    return root
+
+def delete(tree, root, key):
+    if not root:
         return root
-
-    def find(self, root, key):
-        if not root:
-            return False
-        elif root.key < key:
-            return self.find(root.right, key)
-        elif root.key > key:
-            return self.find(root.left, key)
+    elif root.key < key:
+        root.right = delete(tree, root.right, key)
+    elif root.key > key:
+        root.left = delete(tree, root.left, key)
+    else:
+        tree.count-=1
+        if not root.left:
+            x = root.right
+            root = None
+            return x
+        elif not root.right:
+            x = root.left
+            root = None
+            return x
         else:
-            return True
-
-    def delete(self, root, key):
-        if not root:
-            return root
-        elif root.key < key:
-            root.right = self.delete(root.right, key)
-        elif root.key > key:
-            root.left = self.delete(root.left, key)
-        else:
-            if not root.left:
-                x = root.right
-                root = None
-                return x
-            elif not root.right:
-                x = root.left
-                root = None
-                return x
-            else:
-                x = getMinNode(root)
-                root.key = x.key
-                root.left = self.delete(root.left, x.key)
-        if not root:
-            return root
-        root.height = 1 + max(getHeight(root.left),getHeight(root.right))
-        balance = getBalance(root)
-
-        if balance > 1 and getBalance(root.left) >= 0:
-            return RotationL(root)
- 
-        if balance < -1 and getBalance(root.right) <= 0:
-            return RotationR(root)
- 
-        if balance > 1 and getBalance(root.left) < 0:
-            root.right = RotationR(root.right)
-            return RotationL(root)
- 
-        if balance < -1 and getBalance(root.right) > 0:
-            root.left = RotationL(root.left)
-            return RotationR(root)
-
+            x = getMinNode(root)
+            root.key = x.key
+            root.left = delete(tree,root.left, x.key)
+    if not root:
         return root
+    root.height = 1 + max(getHeight(root.left),getHeight(root.right))
+    balance = getBalance(root)
+
+    if balance > 1 and getBalance(root.left) >= 0:
+        return RotationL(root)
+ 
+    if balance < -1 and getBalance(root.right) <= 0:
+        return RotationR(root)
+ 
+    if balance > 1 and getBalance(root.left) < 0:
+        root.right = RotationR(root.right)
+        return RotationL(root)
+ 
+    if balance < -1 and getBalance(root.right) > 0:
+        root.left = RotationL(root.left)
+        return RotationR(root)
+
+    return root
+
+def find(tree, root, key):
+    if not root:
+        return False
+    elif root.key < key:
+        return find(tree, root.right, key)
+    elif root.key > key:
+        return find(tree,root.left, key)
+    else:
+        return True
 
 def preOrder(root):
     if not root:
@@ -147,28 +148,35 @@ def RotationR(root):
     y.height = 1 + max(getHeight(y.left),getHeight(y.right))
     return y
 
+functions = {}
 file = open('AVL.txt', 'r')
+myTree = Tree()
+root = None
+Insert = [50, 30, 70, 15]
+for num in Insert:
+    root = insert(myTree, root, num)
+
+Insert = [38, 48, 42, 75, 98, 99]
+for num in Insert:
+    root = insert(myTree, root, num)
+functions = {'insert':insert}
+preOrder(root)
 while True:
     line = file.readline()
     if not line:
         break
-    print(line)
+    l = line.split()
+    m = l.count
+    k = l[2:]
 
-myTree = Tree()
-root = None
-Insert = [50, 30, 70, 20, 40, 60, 80, 10, 25, 35, 45, 55, 65, 75, 90, 5, 15]
-Delete =  [40, 45, 10, 20, 25, 35]
-for num in Insert:
-    root = myTree.insert(root, num)
-
-for num in Delete:
-    root = myTree.delete(root, num)
-Insert = [38, 48, 42]
-Delete = [30, 35]
-for num in Insert:
-    root = myTree.insert(root, num)
-for num in Delete:
-    root = myTree.delete(root, num)
-
- print("Preorder Traversal after insertion -")
-preOrder(root)
+    if l[0] == 'insert':
+        for num in k:
+            insert(myTree, root, int(num))
+    elif l[0] == 'delete':
+        for num in k:
+            delete(myTree, root, int(num))
+    elif l[0] == 'find':
+        for num in k:
+            print(find(myTree, root, int(num)))
+    print(l)
+#preOrder(root)

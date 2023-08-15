@@ -1,3 +1,3 @@
-zkouska jestli mi funguji commity pres muj mail
-znovu a jeste jednouna norepy mail
-jinak
+insert strom 24 534 43 53 631 54 3232 948 738 737 839 29 746 35 62
+delete strom 43 738 777
+find strom 24 534 43 53 631 54 3232 948 738 737 839 29 746 35 62
