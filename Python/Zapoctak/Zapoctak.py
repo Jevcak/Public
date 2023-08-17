@@ -26,7 +26,6 @@ def getMinNode(root):
 
 class Tree:
     def __init__(self):
-        print("Initialization of the tree")
         self.count = 1
 def insert(tree, root, key):
     if not root:
@@ -40,6 +39,7 @@ def insert(tree, root, key):
         root.right = insert(tree, root.right, key)
     root.height = 1 + max(getHeight(root.left),getHeight(root.right))
     balance = getBalance(root)
+
     if balance > 1:
         if key > root.right.key:
             return RotationL(root)
@@ -52,21 +52,6 @@ def insert(tree, root, key):
         else:
             root.left = RotationL(root.left)
             return RotationR(root)
-        '''
-    if balance > 1 and key < root.left.key:
-        return RotationL(root)
- 
-    if balance < -1 and key > root.right.key:
-        return RotationR(root)
- 
-    if balance > 1 and key > root.left.key:
-        root.right = RotationR(root.right)
-        return RotationL(root)
- 
-    if balance < -1 and key < root.right.key:
-        root.left = RotationL(root.left)
-        return RotationR(root)
-    '''
 
     return root
 
@@ -96,19 +81,19 @@ def delete(tree, root, key):
     root.height = 1 + max(getHeight(root.left),getHeight(root.right))
     balance = getBalance(root)
 
-    if balance > 1 and getBalance(root.left) >= 0:
-        return RotationL(root)
+    if balance > 1:
+        if getBalance(root.left) >= 0:
+            return RotationL(root)
+        else:
+            root.right = RotationR(root.right)
+            return RotationL(root)
  
-    if balance < -1 and getBalance(root.right) <= 0:
-        return RotationR(root)
- 
-    if balance > 1 and getBalance(root.left) < 0:
-        root.right = RotationR(root.right)
-        return RotationL(root)
- 
-    if balance < -1 and getBalance(root.right) > 0:
-        root.left = RotationL(root.left)
-        return RotationR(root)
+    if balance < -1:
+        if getBalance(root.right) <= 0:
+            return RotationR(root)
+        else:
+            root.left = RotationL(root.left)
+            return RotationR(root)
 
     return root
 
@@ -130,6 +115,14 @@ def preOrder(root):
     preOrder(root.right)
     return
 
+def inOrder(root, array = []):
+    if not root:
+        return array
+    array = inOrder(root.left, array)
+    array.append(root.key)
+    array = inOrder(root.right, array)
+    return array
+
 def RotationL(root):
     y = root.right
     B = y.left
@@ -148,19 +141,48 @@ def RotationR(root):
     y.height = 1 + max(getHeight(y.left),getHeight(y.right))
     return y
 
-functions = {}
+def Merge(array1, array2):
+    if len(array1) < len(array2):
+        return Merge(array2, array1)
+    else:
+        i,j = 0,0
+        m = len(array1)
+        n = len(array2)
+        merged = []
+        while i < m and j < n:
+            if array1[i] < array2[j]:
+                merged.append(array1[i])
+                i+=1
+            elif array1[i] == array2[j]:
+                merged.append(array1[i])
+                i+=1
+                j+=1
+            else:
+                merged.append(array2[j])
+                j+=1
+        if i == m:
+            while j < n:
+                merged.append(array2[j])
+                j+=1
+        else:
+            while i < m:
+                merged.append(array1[i])
+                i+=1
+    return merged
+
+
+trees = {}
+roots = {}
 file = open('AVL.txt', 'r')
 myTree = Tree()
+Tre = Tree()
+koren = None
 root = None
 Insert = [50, 30, 70, 15]
 for num in Insert:
     root = insert(myTree, root, num)
 
-Insert = [38, 48, 42, 75, 98, 99]
-for num in Insert:
-    root = insert(myTree, root, num)
-functions = {'insert':insert}
-preOrder(root)
+
 while True:
     line = file.readline()
     if not line:
@@ -168,15 +190,34 @@ while True:
     l = line.split()
     m = l.count
     k = l[2:]
-
     if l[0] == 'insert':
         for num in k:
-            insert(myTree, root, int(num))
+            koren = insert(Tre, koren, int(num))
     elif l[0] == 'delete':
         for num in k:
-            delete(myTree, root, int(num))
+            koren = delete(Tre, koren, int(num))
     elif l[0] == 'find':
         for num in k:
-            print(find(myTree, root, int(num)))
-    print(l)
-#preOrder(root)
+            print(find(Tre, koren, int(num)))
+    elif l[0] == 'merge':
+        temp = []
+        arr1 = inOrder(root, temp)
+        arr2 = inOrder(koren, temp)
+        arr3 = Merge(arr1, arr2)
+        T = Tree()
+        k = None
+        for i in arr3:
+            k = insert(T,k,i)
+temp = []  
+arr = inOrder(root,temp)
+temp = []
+arr2 = inOrder(koren,temp)
+print(arr)
+print(arr2)
+ar = Merge(arr,arr2)
+print(ar)
+TROM = Tree()
+kor = None
+for i in ar:
+    kor = insert(TROM, kor, i)
+preOrder(kor)
