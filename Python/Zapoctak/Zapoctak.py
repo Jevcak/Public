@@ -192,31 +192,56 @@ Insert = [50, 30, 70, 15]
 for num in Insert:
     root = insert(myTree, root, num)
 
-
 while True:
     line = file.readline()
     if not line:
         break
     l = line.split()
-    m = l.count
-    k = l[2:]
     if l[0] == 'insert':
-        for num in k:
-            koren = insert(Tre, koren, int(num))
+        if not l[1] in trees:
+            key = l[1]
+            l[1] = Tree()
+            trees[key] = l[1]
+            l[1] = None
+            roots[key] = l[1]
+            l[1] = key
+        for num in l[2:]:
+            roots[l[1]] = insert(trees[l[1]], roots[l[1]], int(num))
     elif l[0] == 'delete':
-        for num in k:
-            koren = delete(Tre, koren, int(num))
+        if not l[1] in trees:
+            key = l[1]
+            l[1] = Tree()
+            trees[key] = l[1]
+            l[1] = None
+            roots[key] = l[1]
+            l[1] = key
+        for num in l[2:]:
+            roots[l[1]] = delete(trees[l[1]], roots[l[1]], int(num))
     elif l[0] == 'find':
-        for num in k:
-            print(find(Tre, koren, int(num)))
+        if not l[1] in trees:
+            key = l[1]
+            l[1] = Tree()
+            trees[key] = l[1]
+            l[1] = None
+            roots[key] = l[1]
+            l[1] = key
+        for num in l[2:]:
+            print(find(trees[l[1]], roots[l[1]], int(num)))
     elif l[0] == 'merge':
+        if not l[3] in trees:
+            key = l[3]
+            l[3] = Tree()
+            trees[key] = l[3]
+            l[3] = None
+            roots[key] = l[3]
+            l[3] = key
         temp = []
-        arr1 = inOrder(root, temp)
+        arr1 = inOrder(roots[l[1]], temp)
         temp = []
-        arr2 = inOrder(koren, temp)
+        arr2 = inOrder(roots[l[2]], temp)
         arr3 = Merge(arr1, arr2)
-        T = Tree()
-        k = None
-        k = ConstructTree(T,k,arr3)
-
-preOrder(k)
+        k = ConstructTree(trees[l[3]],roots[l[3]],arr3)
+        arr1,arr2,arr3 = [],[],[]
+    elif l[0] == 'print':
+        for tree in l[1:]:
+            preOrder(roots[tree])
