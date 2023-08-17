@@ -115,13 +115,13 @@ def preOrder(root):
     preOrder(root.right)
     return
 
-def inOrder(root, array = []):
+def inOrder(root, temp = []):
     if not root:
-        return array
-    array = inOrder(root.left, array)
-    array.append(root.key)
-    array = inOrder(root.right, array)
-    return array
+        return temp
+    temp = inOrder(root.left, temp)
+    temp.append(root.key)
+    temp = inOrder(root.right, temp)
+    return temp
 
 def RotationL(root):
     y = root.right
@@ -212,22 +212,11 @@ while True:
     elif l[0] == 'merge':
         temp = []
         arr1 = inOrder(root, temp)
+        temp = []
         arr2 = inOrder(koren, temp)
         arr3 = Merge(arr1, arr2)
         T = Tree()
         k = None
-        for i in arr3:
-            k = insert(T,k,i)
-temp = []  
-arr = inOrder(root,temp)
-temp = []
-arr2 = inOrder(koren,temp)
-print(arr)
-print(arr2)
-ar = Merge(arr,arr2)
-print(ar)
-TROM = Tree()
-kor = None
-kor = ConstructTree(TROM, kor, ar)
+        k = ConstructTree(T,k,arr3)
 
-preOrder(kor)
+preOrder(k)
