@@ -1,4 +1,9 @@
-insert strom 4 5 6 12 14 15
+insert strom 4 5 6 
+insert strom 12 14 15
+insert tr 14 16 17 19 13 
 insert tree 7 3 9 6 1
 merge strom tree f
-print strom tree f
+print strom tree f tr
+merge f tr g
+destroy tree
+print strom tree f tr

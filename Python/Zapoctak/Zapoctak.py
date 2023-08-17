@@ -1,4 +1,3 @@
-
 class Node:
     def __init__(self, key):
         self.key = key
@@ -179,19 +178,24 @@ def ConstructTree(tree, root, array):
     root.right = ConstructTree(tree, root.right, array[n+1:])
     tree.count+=1
     return root
-    
+
+def DeleteNodes(root):
+    if not root:
+        return None
+    root.left = DeleteNodes(root.left)
+    root.right = DeleteNodes(root.right)
+    root = None
+    return None
+
+def DeleteTree(key):
+    DeleteNodes(roots[key])
+    roots.pop(key)
+    trees[key] = None
+    trees.pop(key)
 
 trees = {}
 roots = {}
 file = open('AVL.txt', 'r')
-myTree = Tree()
-Tre = Tree()
-koren = None
-root = None
-Insert = [50, 30, 70, 15]
-for num in Insert:
-    root = insert(myTree, root, num)
-
 while True:
     line = file.readline()
     if not line:
@@ -199,49 +203,44 @@ while True:
     l = line.split()
     if l[0] == 'insert':
         if not l[1] in trees:
-            key = l[1]
-            l[1] = Tree()
-            trees[key] = l[1]
-            l[1] = None
-            roots[key] = l[1]
-            l[1] = key
+            newTree = Tree()
+            trees[l[1]] = newTree
+            roots[l[1]] = None
         for num in l[2:]:
             roots[l[1]] = insert(trees[l[1]], roots[l[1]], int(num))
     elif l[0] == 'delete':
         if not l[1] in trees:
-            key = l[1]
-            l[1] = Tree()
-            trees[key] = l[1]
-            l[1] = None
-            roots[key] = l[1]
-            l[1] = key
+            newTree = Tree()
+            trees[l[1]] = newTree
+            roots[l[1]] = None
         for num in l[2:]:
             roots[l[1]] = delete(trees[l[1]], roots[l[1]], int(num))
     elif l[0] == 'find':
         if not l[1] in trees:
-            key = l[1]
-            l[1] = Tree()
-            trees[key] = l[1]
-            l[1] = None
-            roots[key] = l[1]
-            l[1] = key
+            newTree = Tree()
+            trees[l[1]] = newTree
+            roots[l[1]] = None
         for num in l[2:]:
             print(find(trees[l[1]], roots[l[1]], int(num)))
     elif l[0] == 'merge':
         if not l[3] in trees:
-            key = l[3]
-            l[3] = Tree()
-            trees[key] = l[3]
-            l[3] = None
-            roots[key] = l[3]
-            l[3] = key
+            newTree = Tree()
+            trees[l[3]] = newTree
+            roots[l[3]] = None
         temp = []
         arr1 = inOrder(roots[l[1]], temp)
         temp = []
         arr2 = inOrder(roots[l[2]], temp)
         arr3 = Merge(arr1, arr2)
-        k = ConstructTree(trees[l[3]],roots[l[3]],arr3)
+        roots[l[3]] = ConstructTree(trees[l[3]],roots[l[3]],arr3)
         arr1,arr2,arr3 = [],[],[]
     elif l[0] == 'print':
-        for tree in l[1:]:
-            preOrder(roots[tree])
+        for key in l[1:]:
+            if key in roots:
+                preOrder(roots[key])
+            else:
+                print('Strom {} neexistuje'.format(key), end=' ')
+            print()
+    elif l[0] == 'destroy':
+        for key in l[1:]:
+            DeleteTree(key)
