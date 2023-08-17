@@ -170,6 +170,16 @@ def Merge(array1, array2):
                 i+=1
     return merged
 
+def ConstructTree(tree, root, array):
+    if not array:
+        return None
+    n = len(array) // 2
+    root = Node(array[n])
+    root.left = ConstructTree(tree, root.left, array[:n])
+    root.right = ConstructTree(tree, root.right, array[n+1:])
+    tree.count+=1
+    return root
+    
 
 trees = {}
 roots = {}
@@ -218,6 +228,6 @@ ar = Merge(arr,arr2)
 print(ar)
 TROM = Tree()
 kor = None
-for i in ar:
-    kor = insert(TROM, kor, i)
+kor = ConstructTree(TROM, kor, ar)
+
 preOrder(kor)

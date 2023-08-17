@@ -1,2 +1,1 @@
-insert strom 24 13 6 9 12 15 16 19 17 21
-delete strom 24 13 12 15 16 19 21 
+insert strom 24 13 6
