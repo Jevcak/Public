@@ -1,0 +1,15 @@
+C:\Users\START\Desktop\Public\C#\WordCounting\bin\Debug\net6.0\WordCounting.exe
+C:\Users\START\Desktop\Public\C#\WordCounting\bin\Debug\net6.0\WordCounting.deps.json
+C:\Users\START\Desktop\Public\C#\WordCounting\bin\Debug\net6.0\WordCounting.runtimeconfig.json
+C:\Users\START\Desktop\Public\C#\WordCounting\bin\Debug\net6.0\WordCounting.dll
+C:\Users\START\Desktop\Public\C#\WordCounting\bin\Debug\net6.0\WordCounting.pdb
+C:\Users\START\Desktop\Public\C#\WordCounting\obj\Debug\net6.0\WordCounting.csproj.AssemblyReference.cache
+C:\Users\START\Desktop\Public\C#\WordCounting\obj\Debug\net6.0\WordCounting.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\START\Desktop\Public\C#\WordCounting\obj\Debug\net6.0\WordCounting.AssemblyInfoInputs.cache
+C:\Users\START\Desktop\Public\C#\WordCounting\obj\Debug\net6.0\WordCounting.AssemblyInfo.cs
+C:\Users\START\Desktop\Public\C#\WordCounting\obj\Debug\net6.0\WordCounting.csproj.CoreCompileInputs.cache
+C:\Users\START\Desktop\Public\C#\WordCounting\obj\Debug\net6.0\WordCounting.dll
+C:\Users\START\Desktop\Public\C#\WordCounting\obj\Debug\net6.0\refint\WordCounting.dll
+C:\Users\START\Desktop\Public\C#\WordCounting\obj\Debug\net6.0\WordCounting.pdb
+C:\Users\START\Desktop\Public\C#\WordCounting\obj\Debug\net6.0\WordCounting.genruntimeconfig.cache
+C:\Users\START\Desktop\Public\C#\WordCounting\obj\Debug\net6.0\ref\WordCounting.dll
