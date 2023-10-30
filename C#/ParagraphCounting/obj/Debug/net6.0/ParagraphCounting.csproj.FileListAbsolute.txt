@@ -1,0 +1,15 @@
+C:\Users\START\Desktop\Public\C#\ParagraphCounting\bin\Debug\net6.0\ParagraphCounting.exe
+C:\Users\START\Desktop\Public\C#\ParagraphCounting\bin\Debug\net6.0\ParagraphCounting.deps.json
+C:\Users\START\Desktop\Public\C#\ParagraphCounting\bin\Debug\net6.0\ParagraphCounting.runtimeconfig.json
+C:\Users\START\Desktop\Public\C#\ParagraphCounting\bin\Debug\net6.0\ParagraphCounting.dll
+C:\Users\START\Desktop\Public\C#\ParagraphCounting\bin\Debug\net6.0\ParagraphCounting.pdb
+C:\Users\START\Desktop\Public\C#\ParagraphCounting\obj\Debug\net6.0\ParagraphCounting.csproj.AssemblyReference.cache
+C:\Users\START\Desktop\Public\C#\ParagraphCounting\obj\Debug\net6.0\ParagraphCounting.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\START\Desktop\Public\C#\ParagraphCounting\obj\Debug\net6.0\ParagraphCounting.AssemblyInfoInputs.cache
+C:\Users\START\Desktop\Public\C#\ParagraphCounting\obj\Debug\net6.0\ParagraphCounting.AssemblyInfo.cs
+C:\Users\START\Desktop\Public\C#\ParagraphCounting\obj\Debug\net6.0\ParagraphCounting.csproj.CoreCompileInputs.cache
+C:\Users\START\Desktop\Public\C#\ParagraphCounting\obj\Debug\net6.0\ParagraphCounting.dll
+C:\Users\START\Desktop\Public\C#\ParagraphCounting\obj\Debug\net6.0\refint\ParagraphCounting.dll
+C:\Users\START\Desktop\Public\C#\ParagraphCounting\obj\Debug\net6.0\ParagraphCounting.pdb
+C:\Users\START\Desktop\Public\C#\ParagraphCounting\obj\Debug\net6.0\ParagraphCounting.genruntimeconfig.cache
+C:\Users\START\Desktop\Public\C#\ParagraphCounting\obj\Debug\net6.0\ref\ParagraphCounting.dll

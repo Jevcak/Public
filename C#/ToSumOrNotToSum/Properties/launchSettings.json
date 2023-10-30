@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ToSumOrNotToSum": {
+      "commandName": "Project",
+      "commandLineArgs": "file.txt output.txt trzba"
+    }
+  }
+}
