@@ -1,0 +1,15 @@
+C:\Users\START\Desktop\Public\C#\UnitTest\UnitTest\bin\Debug\net6.0\UnitTest.exe
+C:\Users\START\Desktop\Public\C#\UnitTest\UnitTest\bin\Debug\net6.0\UnitTest.deps.json
+C:\Users\START\Desktop\Public\C#\UnitTest\UnitTest\bin\Debug\net6.0\UnitTest.runtimeconfig.json
+C:\Users\START\Desktop\Public\C#\UnitTest\UnitTest\bin\Debug\net6.0\UnitTest.dll
+C:\Users\START\Desktop\Public\C#\UnitTest\UnitTest\bin\Debug\net6.0\UnitTest.pdb
+C:\Users\START\Desktop\Public\C#\UnitTest\UnitTest\obj\Debug\net6.0\UnitTest.csproj.AssemblyReference.cache
+C:\Users\START\Desktop\Public\C#\UnitTest\UnitTest\obj\Debug\net6.0\UnitTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\START\Desktop\Public\C#\UnitTest\UnitTest\obj\Debug\net6.0\UnitTest.AssemblyInfoInputs.cache
+C:\Users\START\Desktop\Public\C#\UnitTest\UnitTest\obj\Debug\net6.0\UnitTest.AssemblyInfo.cs
+C:\Users\START\Desktop\Public\C#\UnitTest\UnitTest\obj\Debug\net6.0\UnitTest.csproj.CoreCompileInputs.cache
+C:\Users\START\Desktop\Public\C#\UnitTest\UnitTest\obj\Debug\net6.0\UnitTest.dll
+C:\Users\START\Desktop\Public\C#\UnitTest\UnitTest\obj\Debug\net6.0\refint\UnitTest.dll
+C:\Users\START\Desktop\Public\C#\UnitTest\UnitTest\obj\Debug\net6.0\UnitTest.pdb
+C:\Users\START\Desktop\Public\C#\UnitTest\UnitTest\obj\Debug\net6.0\UnitTest.genruntimeconfig.cache
+C:\Users\START\Desktop\Public\C#\UnitTest\UnitTest\obj\Debug\net6.0\ref\UnitTest.dll
