@@ -8,6 +8,16 @@ namespace ToSumOrNotToSum
     {
         static void Main(string[] args)
         {
+            var state = new ProgramInputOutputState();
+            if (!state.InitFromCommandLineArgs(args))
+            {
+                return;
+            }
+            var counter = new ParagraphCounter(state.Reader!, state.Writer!);
+            counter.Execute();
+
+            state.Dispose();
+            /*
             string[] line;
             string temp;
             int size = 0;
@@ -77,7 +87,65 @@ namespace ToSumOrNotToSum
                 Console.WriteLine("File Error");
                 goto End;
             }
-        End:;
+            */
         }
     }
+    public class ProgramInputOutputState : IDisposable
+    {
+        public const string ArgumentErrorMessage = "Argument Error";
+        public const string FileErrorMessage = "File Error";
+        public const string ColumnNameError = "Non-existent Column Name";
+        public const string FileFormatError = "Invalid File Format";
+        public const string IntegerValueError = "Invalid Integer Value";
+        public TextReader? Reader { get; private set; }
+        public TextWriter? Writer { get; private set; }
+        public bool InitFromCommandLineArgs(string[] args)
+        {
+            if (args.Length < 3)
+            {
+                Console.WriteLine(ArgumentErrorMessage);
+                return false;
+            }
+            try
+            {
+                Reader = new StreamReader(args[0]);
+            } catch
+            {
+                Console.WriteLine(FileErrorMessage);
+            }
+            try
+            {
+                Writer = new StreamWriter(args[1]);
+            } catch
+            {
+                Console.WriteLine(FileErrorMessage);
+            }
+            return true;
+        }
+        public void Dispose()
+        {
+            Reader?.Dispose();
+            Writer?.Dispose();
+        }
+    }
+    public class ParagraphCounter
+    {
+        private TextReader reader;
+        private TextWriter writer;
+        public ParagraphCounter(TextReader rdr, TextWriter wrt)
+        {
+            reader = rdr;
+            writer = wrt;
+        }
+        public void Execute()
+        {
+            int lineCount = 0;
+            while (reader.ReadLine() is not null)
+            {
+                lineCount++;
+            }
+            writer.WriteLine(lineCount);
+        }
+    }
+
 }

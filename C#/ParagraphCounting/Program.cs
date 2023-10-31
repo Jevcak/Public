@@ -2,52 +2,90 @@
 using System.IO;
 using System;
 
-
 namespace ParagraphCounting
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            string[] line;
-            string temp;
-            int i = 0;
-            char[] charSeparators = new char[] { ' ', '\t', '\n' };
-            List<int> counts = new List<int>();
-            string file = ResolveArg.ResolveArguments(args);
-            if (file == " ") goto End;
+            var state = new ProgramInputOutputState();
+            if (!state.InitFromCommandLineArgs(args))
+            {
+                return;
+            }
+            var counter = new ParagraphCounter(state.Reader!, state.Writer!);
+            counter.Count();
+
+            state.Dispose();
+   
+        }
+    }
+    public class ProgramInputOutputState : IDisposable
+    {
+        public const string ArgumentErrorMessage = "Argument Error";
+        public const string FileErrorMessage = "File Error";
+        public TextReader? Reader { get; private set; }
+        public TextWriter? Writer { get; private set; }
+        public bool InitFromCommandLineArgs(string[] args)
+        {
+            if (args.Length < 1)
+            {
+                Console.WriteLine(ArgumentErrorMessage);
+                return false;
+            }
             try
             {
-                using (StreamReader read = new StreamReader(file))
-                {
-                    temp = read.ReadLine();
-                    while (temp != null)
-                    {
-                        line = temp.Split(charSeparators, StringSplitOptions.RemoveEmptyEntries);
-                        if ((line.Length < 1) & (i > 0))
-                        {
-                            counts.Add(i);
-                            i = 0;
-                        }
-                        else i += line.Length;
-                        temp = read.ReadLine();
-                    }
-                    if (i > 0)
-                    {
-                        counts.Add(i);
-                    }
-                }
+                Reader = new StreamReader(args[0]);
+                Writer = Console.Out;
             }
             catch
             {
-                Console.WriteLine("File Error");
-                goto End;
+                Console.WriteLine(FileErrorMessage);
+            }
+            return true;
+        }
+        public void Dispose()
+        {
+            Reader?.Dispose();
+            Writer?.Dispose();
+        }
+    }
+    public class ParagraphCounter
+    {
+        private TextReader reader;
+        private TextWriter writer;
+        private string? temp;
+        private string[] line;
+        private char[] charSeparators = new char[] { ' ', '\t', '\n' };
+        private List<int> counts = new List<int>();
+        public ParagraphCounter(TextReader rdr, TextWriter wrt)
+        {
+            reader = rdr;
+            writer = wrt;
+        }
+        public void Count()
+        {
+            int i = 0;
+            
+            while ((temp = reader.ReadLine()) is not null)
+            {
+                line = temp.Split(charSeparators, StringSplitOptions.RemoveEmptyEntries);
+                if ((line.Length < 1) & (i > 0))
+                {
+                    counts.Add(i);
+                    i = 0;
+                }
+                else i += line.Length;
+            }
+            if (i > 0)
+            {
+                counts.Add(i);
             }
             foreach (int k in counts)
             {
-                Console.WriteLine(k);
+                writer.WriteLine(k);
             }
-        End:;
         }
     }
+
 }

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ParagraphCounting": {
+      "commandName": "Project",
+      "commandLineArgs": "file.txt"
+    }
+  }
+}
