@@ -11,7 +11,7 @@ public class Main {
         s.delete(0, 1);
         s.insert(0, 'H');
         s.append("!");
-        System.out.println(s.ToString());
+        System.out.println(s);
         MyString str = new MyString("Joko");
         System.out.println(str);
         str.append(" Ono");

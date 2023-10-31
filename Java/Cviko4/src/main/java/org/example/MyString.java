@@ -1,7 +1,7 @@
 package org.example;
 
-public class MyString {
-    String string;
+public class MyString{
+    private String string;
     public MyString(String str) {
         this.string = str;
     }
@@ -43,7 +43,8 @@ public class MyString {
         }
         this.string = temp;
     }
-    public String ToString() {
+    @Override
+    public String toString() {
         return this.string;
     }
 }
