@@ -1,7 +1,5 @@
 package org.example.MyCollection;
 
-import java.io.Console;
-import java.util.Arrays;
 import java.util.Iterator;
 
 public class Collection implements MyCollection{
@@ -54,6 +52,9 @@ public class Collection implements MyCollection{
         for (int i = 0; i < pole.length; i++) {
             System.out.println(pole[i]);
         }
+    }
+    public Object get(int i) {
+        return pole[i];
     }
     public void remove(int i) {
         if (i < pole.length) {
