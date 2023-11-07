@@ -3,7 +3,6 @@ C:\Users\START\Desktop\Public\C#\ToSumOrNotToSum\bin\Debug\net6.0\ToSumOrNotToSu
 C:\Users\START\Desktop\Public\C#\ToSumOrNotToSum\bin\Debug\net6.0\ToSumOrNotToSum.runtimeconfig.json
 C:\Users\START\Desktop\Public\C#\ToSumOrNotToSum\bin\Debug\net6.0\ToSumOrNotToSum.dll
 C:\Users\START\Desktop\Public\C#\ToSumOrNotToSum\bin\Debug\net6.0\ToSumOrNotToSum.pdb
-C:\Users\START\Desktop\Public\C#\ToSumOrNotToSum\obj\Debug\net6.0\ToSumOrNotToSum.csproj.AssemblyReference.cache
 C:\Users\START\Desktop\Public\C#\ToSumOrNotToSum\obj\Debug\net6.0\ToSumOrNotToSum.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\START\Desktop\Public\C#\ToSumOrNotToSum\obj\Debug\net6.0\ToSumOrNotToSum.AssemblyInfoInputs.cache
 C:\Users\START\Desktop\Public\C#\ToSumOrNotToSum\obj\Debug\net6.0\ToSumOrNotToSum.AssemblyInfo.cs

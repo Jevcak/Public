@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
+using System.Drawing;
 using System.IO;
-
+#nullable enable
 namespace ToSumOrNotToSum
 {
     internal class Program
@@ -13,95 +15,21 @@ namespace ToSumOrNotToSum
             {
                 return;
             }
-            var counter = new ParagraphCounter(state.Reader!, state.Writer!);
-            counter.Execute();
+            var counter = new Summer(state.Reader!, state.Writer!, Console.Out);
+            counter.Sum(args[2]);
 
             state.Dispose();
-            /*
-            string[] line;
-            string temp;
-            int size = 0;
-            int count = 0;
-            string delimiter = "";
-            char[] charSeparators = new char[] { ' ', '\t', '\n' };
-            int position = -1;
-            if (!ResolveArg.ResolveArguments(args)) goto End;
-            try
-            {
-                using (StreamReader read = new StreamReader(args[0]))
-                {
-                    temp = read.ReadLine();
-                    line = temp.Split(charSeparators, StringSplitOptions.RemoveEmptyEntries);
-                    size = line.Length;
-                    for (int i = 0; i < size; i++)
-                    {
-                        if (line[i] == args[2])
-                        {
-                            position = i;
-                        }
-
-                    }
-                    foreach (char i in args[2])
-                    {
-                        delimiter += '-';
-                    }
-                    if (position == -1)
-                    {
-                        Console.WriteLine("Non-existent Column Name");
-                        goto End;
-                    }
-                    temp = read.ReadLine();
-                    while (temp != null)
-                    {
-                        line = temp.Split(charSeparators, StringSplitOptions.RemoveEmptyEntries);
-                        if (line.Length != size)
-                        {
-                            Console.WriteLine("Invalid File Format");
-                            goto End;
-                        }
-                        else
-                        {
-                            if (Int32.TryParse(line[position], out int s))
-                            {
-                                count += s;
-                            }
-                            else
-                            {
-                                Console.WriteLine("Invalid Integer Value");
-                                goto End;
-                            }
-
-                        }
-                        temp = read.ReadLine();
-                    }
-                }
-                using (StreamWriter write = new StreamWriter(args[1]))
-                {
-                    write.WriteLine(args[2]);
-                    write.WriteLine(delimiter);
-                    write.WriteLine(count);
-                }
-            }
-            catch
-            {
-                Console.WriteLine("File Error");
-                goto End;
-            }
-            */
         }
     }
     public class ProgramInputOutputState : IDisposable
     {
         public const string ArgumentErrorMessage = "Argument Error";
         public const string FileErrorMessage = "File Error";
-        public const string ColumnNameError = "Non-existent Column Name";
-        public const string FileFormatError = "Invalid File Format";
-        public const string IntegerValueError = "Invalid Integer Value";
         public TextReader? Reader { get; private set; }
         public TextWriter? Writer { get; private set; }
         public bool InitFromCommandLineArgs(string[] args)
         {
-            if (args.Length < 3)
+            if (args.Length != 3)
             {
                 Console.WriteLine(ArgumentErrorMessage);
                 return false;
@@ -112,6 +40,7 @@ namespace ToSumOrNotToSum
             } catch
             {
                 Console.WriteLine(FileErrorMessage);
+                return false;
             }
             try
             {
@@ -119,6 +48,7 @@ namespace ToSumOrNotToSum
             } catch
             {
                 Console.WriteLine(FileErrorMessage);
+                return false;
             }
             return true;
         }
@@ -128,24 +58,81 @@ namespace ToSumOrNotToSum
             Writer?.Dispose();
         }
     }
-    public class ParagraphCounter
+    public class Summer
     {
         private TextReader reader;
         private TextWriter writer;
-        public ParagraphCounter(TextReader rdr, TextWriter wrt)
+        private TextWriter errorwriter;
+        private string? temp;
+        private string[]? line;
+        private char[] charSeparators = new char[] { ' ', '\t', '\n' };
+        public const string ColumnNameError = "Non-existent Column Name";
+        public const string FileFormatError = "Invalid File Format";
+        public const string IntegerValueError = "Invalid Integer Value";
+        int position;
+        int size = 0;
+
+        public Summer(TextReader rdr, TextWriter wrt, TextWriter errwrt)
         {
             reader = rdr;
             writer = wrt;
+            errorwriter = errwrt;
+
         }
-        public void Execute()
+        public bool GetPosition(string[] line, string name)
         {
-            int lineCount = 0;
-            while (reader.ReadLine() is not null)
+            for (int i = 0; i < size; i++)
             {
-                lineCount++;
+                if (line[i] == name)
+                {
+                    position = i;
+                    return true;
+                }
             }
-            writer.WriteLine(lineCount);
+            return false;
+        }
+        public void Sum(string column)
+        {
+            Int64 count = 0;
+            if (((temp = reader.ReadLine()) != null) && ((line = temp.Split(charSeparators, StringSplitOptions.RemoveEmptyEntries)).Length > 0))
+            {
+                line = temp.Split(charSeparators, StringSplitOptions.RemoveEmptyEntries);
+                size = line.Length;
+                if (GetPosition(line, column))
+                {
+                    while ((temp = reader.ReadLine()) != null)
+                    {
+                        line = temp.Split(charSeparators, StringSplitOptions.RemoveEmptyEntries);
+                        if (line.Length != size)
+                        {
+                            errorwriter.WriteLine(FileFormatError);
+                            return;
+                        }
+                        else
+                        {
+                            if (Int32.TryParse(line[position], out int s))
+                            {
+                                count += s;
+                            }
+                            else
+                            {
+                                errorwriter.WriteLine(IntegerValueError);
+                                return;
+                            }
+                        }
+                    }
+                    writer.WriteLine(column);
+                    foreach (char i in column)
+                    {
+                        writer.Write('-');
+                    }
+                    writer.Write(writer.NewLine);
+                    writer.WriteLine(count);
+                }
+                else errorwriter.WriteLine(ColumnNameError);
+            }
+            else errorwriter.WriteLine(FileFormatError);
         }
     }
-
 }
+

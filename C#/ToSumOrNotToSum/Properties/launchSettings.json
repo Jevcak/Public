@@ -2,7 +2,7 @@
   "profiles": {
     "ToSumOrNotToSum": {
       "commandName": "Project",
-      "commandLineArgs": "file.txt output.txt trzba"
+      "commandLineArgs": "file.txt outputtxt cena"
     }
   }
 }

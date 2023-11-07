@@ -3,6 +3,7 @@ using System.IO;
 using System;
 
 namespace ParagraphCounting
+#nullable enable
 {
     internal class Program
     {
@@ -41,6 +42,7 @@ namespace ParagraphCounting
             catch
             {
                 Console.WriteLine(FileErrorMessage);
+                return false;
             }
             return true;
         }
@@ -55,7 +57,7 @@ namespace ParagraphCounting
         private TextReader reader;
         private TextWriter writer;
         private string? temp;
-        private string[] line;
+        private string[]? line;
         private char[] charSeparators = new char[] { ' ', '\t', '\n' };
         private List<int> counts = new List<int>();
         public ParagraphCounter(TextReader rdr, TextWriter wrt)
