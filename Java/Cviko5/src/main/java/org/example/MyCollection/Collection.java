@@ -5,8 +5,15 @@ import java.util.Iterator;
 public class Collection implements MyCollection{
     public Object[] pole = new Object[1];
     int s = 0;
-    public Collection() {
+    public Collection(String... args) {
         pole = null;
+    }
+    public static Collection of(String... args) {
+        Collection temp = new Collection();
+        for (String arg : args) {
+            temp.add(arg);
+        }
+        return temp;
     }
     public void add(Object o) {
         if (pole == null) {

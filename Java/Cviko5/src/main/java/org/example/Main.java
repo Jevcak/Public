@@ -9,5 +9,7 @@ public class Main {
             Pole.add(s);
         }
         Pole.print();
+        Collection arr = Collection.of("hello", "world", "!");
+        arr.print();
     }
 }
