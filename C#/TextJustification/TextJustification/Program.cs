@@ -14,49 +14,50 @@ namespace TextJustification
             {
                 return;
             }
-            var counter = new Summer(state.Reader!, state.Writer!, Console.Out);
-            counter.Sum(args[2]);
+            //var counter = new Summer(state.Reader!, state.Writer!, Console.Out);
+            var justifier = new Justifier(state.Reader!, state.Writer!, Console.Out);
+            //counter.Sum(args[2]);
+            justifier.Justify(Int32.Parse(args[2]));
 
             state.Dispose();
         }
     }
-    public class ProgramInputOutputState : IDisposable
+    public class Justifier
     {
-        public const string ArgumentErrorMessage = "Argument Error";
-        public const string FileErrorMessage = "File Error";
-        public TextReader? Reader { get; private set; }
-        public TextWriter? Writer { get; private set; }
-        public bool InitFromCommandLineArgs(string[] args)
+        private TextReader reader;
+        private TextWriter writer;
+        private TextWriter errorwriter;
+        private char?[] charSeparators = new char?[] { ' ', '\t', '\n' };
+        private char? temp;
+        public Justifier(TextReader rdr, TextWriter wrt, TextWriter errwrt)
         {
-            if (args.Length != 3)
-            {
-                Console.WriteLine(ArgumentErrorMessage);
-                return false;
-            }
-            try
-            {
-                Reader = new StreamReader(args[0]);
-            }
-            catch
-            {
-                Console.WriteLine(FileErrorMessage);
-                return false;
-            }
-            try
-            {
-                Writer = new StreamWriter(args[1]);
-            }
-            catch
-            {
-                Console.WriteLine(FileErrorMessage);
-                return false;
-            }
-            return true;
+            reader = rdr;
+            writer = wrt;
+            errorwriter = errwrt;
         }
-        public void Dispose()
+        public void Justify(int max)
         {
-            Reader?.Dispose();
-            Writer?.Dispose();
+            int i = 0;
+            while ((temp = (char)reader.Read()) != null)
+            {
+                while (i < max)
+                {
+                    while (!charSeparators.Contains(temp))
+                    {
+                        writer.Write(temp);
+                        i++;
+                        temp = (char)reader.Read();
+                    }
+                    if (i < max)
+                    {
+                        writer.Write(' ');
+                        i++;
+                        temp = (char)reader.Read();
+                    }
+                }
+                writer.Write(writer.NewLine);
+                i = 0;
+            }
         }
     }
     public class Summer
