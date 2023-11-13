@@ -1,0 +1,16 @@
+C:\Users\START\Desktop\Public\C#\TextJustification\TextJustification\bin\Debug\net6.0\file.txt
+C:\Users\START\Desktop\Public\C#\TextJustification\TextJustification\bin\Debug\net6.0\output.txt
+C:\Users\START\Desktop\Public\C#\TextJustification\TextJustification\bin\Debug\net6.0\TextJustification.exe
+C:\Users\START\Desktop\Public\C#\TextJustification\TextJustification\bin\Debug\net6.0\TextJustification.deps.json
+C:\Users\START\Desktop\Public\C#\TextJustification\TextJustification\bin\Debug\net6.0\TextJustification.runtimeconfig.json
+C:\Users\START\Desktop\Public\C#\TextJustification\TextJustification\bin\Debug\net6.0\TextJustification.dll
+C:\Users\START\Desktop\Public\C#\TextJustification\TextJustification\bin\Debug\net6.0\TextJustification.pdb
+C:\Users\START\Desktop\Public\C#\TextJustification\TextJustification\obj\Debug\net6.0\TextJustification.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\START\Desktop\Public\C#\TextJustification\TextJustification\obj\Debug\net6.0\TextJustification.AssemblyInfoInputs.cache
+C:\Users\START\Desktop\Public\C#\TextJustification\TextJustification\obj\Debug\net6.0\TextJustification.AssemblyInfo.cs
+C:\Users\START\Desktop\Public\C#\TextJustification\TextJustification\obj\Debug\net6.0\TextJustification.csproj.CoreCompileInputs.cache
+C:\Users\START\Desktop\Public\C#\TextJustification\TextJustification\obj\Debug\net6.0\TextJustification.dll
+C:\Users\START\Desktop\Public\C#\TextJustification\TextJustification\obj\Debug\net6.0\refint\TextJustification.dll
+C:\Users\START\Desktop\Public\C#\TextJustification\TextJustification\obj\Debug\net6.0\TextJustification.pdb
+C:\Users\START\Desktop\Public\C#\TextJustification\TextJustification\obj\Debug\net6.0\TextJustification.genruntimeconfig.cache
+C:\Users\START\Desktop\Public\C#\TextJustification\TextJustification\obj\Debug\net6.0\ref\TextJustification.dll

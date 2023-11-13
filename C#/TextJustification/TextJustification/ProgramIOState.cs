@@ -39,10 +39,10 @@ namespace TextJustification
             }
             try
             {
-                Int32.Parse(args[3]);
+                Int32.Parse(args[2]);
             }
             catch
-            {
+            {   
                 Console.WriteLine(ArgumentErrorMessage);
                 return false;
             }
