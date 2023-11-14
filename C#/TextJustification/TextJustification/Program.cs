@@ -27,8 +27,10 @@ namespace TextJustification
         private TextReader reader;
         private TextWriter writer;
         private TextWriter errorwriter;
-        private char?[] charSeparators = new char?[] { ' ', '\t', '\n' };
-        private char? temp;
+        private int[] charSeparators = new int[] { ' ', '\t', '\n', '\uffff' };
+        private int temp;
+        private string tempword = "";
+        private string[] line;
         public Justifier(TextReader rdr, TextWriter wrt, TextWriter errwrt)
         {
             reader = rdr;
@@ -37,14 +39,15 @@ namespace TextJustification
         }
         public void Justify(int max)
         {
+            line = new string[max];
             int i = 0;
-            while ((temp = (char)reader.Read()) != null)
+            while ((temp = reader.Read()) != -1)
             {
                 while (i < max)
                 {
                     while (!charSeparators.Contains(temp))
                     {
-                        writer.Write(temp);
+                        writer.Write((char)temp);
                         i++;
                         temp = (char)reader.Read();
                     }
@@ -55,7 +58,7 @@ namespace TextJustification
                         temp = (char)reader.Read();
                     }
                 }
-                writer.Write(writer.NewLine);
+                writer.Write('\n');
                 i = 0;
             }
         }
