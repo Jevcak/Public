@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.IO;
 #nullable enable
 
@@ -14,9 +16,7 @@ namespace TextJustification
             {
                 return;
             }
-            //var counter = new Summer(state.Reader!, state.Writer!, Console.Out);
             var justifier = new Justifier(state.Reader!, state.Writer!, Console.Out);
-            //counter.Sum(args[2]);
             justifier.Justify(Int32.Parse(args[2]));
 
             state.Dispose();
@@ -27,10 +27,10 @@ namespace TextJustification
         private TextReader reader;
         private TextWriter writer;
         private TextWriter errorwriter;
-        private int[] charSeparators = new int[] { ' ', '\t', '\n', '\uffff' };
+        private int[] charSeparators = new int[] { ' ', '\t','\r', '\n', -1 };
         private int temp;
         private string tempword = "";
-        private string[] line;
+        private List<string> line = new List<string>();
         public Justifier(TextReader rdr, TextWriter wrt, TextWriter errwrt)
         {
             reader = rdr;
@@ -39,28 +39,53 @@ namespace TextJustification
         }
         public void Justify(int max)
         {
-            line = new string[max];
             int i = 0;
-            while ((temp = reader.Read()) != -1)
+            while (reader.Peek() != -1)
             {
-                while (i < max)
+                while (!charSeparators.Contains(temp = reader.Read()))
                 {
-                    while (!charSeparators.Contains(temp))
+                    tempword += (char)temp;
+                    i++;
+                }
+                if (i <= max)
+                {
+                    line.Add(tempword);
+                    tempword = "";
+                    i++;
+                }
+                else
+                {
+                    WriteJustified(line, max);
+                    line.Clear();
+                    line.Add(tempword);
+
+                }
+            }
+            if (line.Count() != 0)
+            {
+                writer.Write(line[0]);
+                writer.Write('\n');
+            }
+        }
+        private void WriteJustified(List<String> text, int max)
+        {
+            int sumOfLengths = text.Sum(s => s.Length);
+            int ConstantWhiteSpaces = (max - sumOfLengths) / (text.Count() - 1);
+            int AddWhiteSpace = (max - sumOfLengths) % (text.Count() - 1);
+            for (int j = 0; j < text.Count(); j++)
+            {
+                writer.Write(text[j]);
+                if (j != text.Count() - 1)
+                {
+                    for (int i = 0; i < ConstantWhiteSpaces; i++)
                     {
-                        writer.Write((char)temp);
-                        i++;
-                        temp = (char)reader.Read();
-                    }
-                    if (i < max)
-                    {
-                        writer.Write(' ');
-                        i++;
-                        temp = (char)reader.Read();
+                        writer.Write(" ");
                     }
                 }
-                writer.Write('\n');
-                i = 0;
+                if (AddWhiteSpace > 0)
+                    writer.Write(" ");
             }
+            writer.Write('\n');
         }
     }
     public class Summer

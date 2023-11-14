@@ -2,7 +2,7 @@
   "profiles": {
     "TextJustification": {
       "commandName": "Project",
-      "commandLineArgs": "file.txt output.txt 7"
+      "commandLineArgs": "file.txt output.txt 6"
     }
   }
 }
