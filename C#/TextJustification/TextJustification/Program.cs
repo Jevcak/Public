@@ -27,7 +27,7 @@ namespace TextJustification
         private TextReader reader;
         private TextWriter writer;
         private TextWriter errorwriter;
-        private int[] charSeparators = new int[] { ' ', '\t','\r', '\n', -1 };
+        private int[] charSeparators = new int[] { ' ', '\t', '\n', -1 };
         private int temp;
         private string tempword = "";
         private List<string> line = new List<string>();
@@ -40,6 +40,29 @@ namespace TextJustification
         public void Justify(int max)
         {
             int i = 0;
+            bool whiteline = true;
+            bool done = false;
+            int last;
+            while (!done)
+            {
+                last = temp;
+                switch (temp = reader.Read())
+                {
+                    case -1:
+                        if (!whiteline)
+                            WriteJustified(line, max);
+                        done = true;
+                        return;
+                    case '\n':
+                        if (whiteline)
+                            writer.Write('\n');
+                        break;
+                    case ' ' or '\t':
+                        break;
+                    default:
+                        break;
+                }
+            }
             while (reader.Peek() != -1)
             {
                 while (!charSeparators.Contains(temp = reader.Read()))
