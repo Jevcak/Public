@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>Benchmark1.BenchmarkScenario2-20231124-213605</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.13.10, Windows 11 (10.0.22621.2715/22H2/2022Update/SunValley2)
+11th Gen Intel Core i7-1165G7 2.80GHz, 1 CPU, 8 logical and 4 physical cores
+.NET SDK 7.0.403
+  [Host]     : .NET 6.0.24 (6.0.2423.51814), X64 RyuJIT AVX2 [AttachedDebugger]
+  DefaultJob : .NET 6.0.24 (6.0.2423.51814), X64 RyuJIT AVX2
+</code></pre>
+<pre><code></code></pre>
+
+<table>
+<thead><tr><th>Method                    </th><th>Mean</th><th>Error</th><th>StdDev</th>
+</tr>
+</thead><tbody><tr><td>DifferentWordsSortedList</td><td>4,492.1 ns</td><td>28.23 ns</td><td>27.72 ns</td>
+</tr><tr><td>DifferentWordsSortedDict</td><td>7,873.6 ns</td><td>121.93 ns</td><td>114.06 ns</td>
+</tr><tr><td>DifferentWordsDictSort</td><td>1,915.6 ns</td><td>28.75 ns</td><td>26.89 ns</td>
+</tr><tr><td>SameWordMultipleTimesSortedList</td><td>687.3 ns</td><td>8.99 ns</td><td>7.51 ns</td>
+</tr><tr><td>SameWordMultipleTimesSortedDict</td><td>424.3 ns</td><td>5.34 ns</td><td>4.46 ns</td>
+</tr><tr><td>SameWordMultipleTimesDictSort</td><td>525.5 ns</td><td>9.26 ns</td><td>7.73 ns</td>
+</tr><tr><td>DiffWordsMultipleTimesSortedList</td><td>3,765.7 ns</td><td>69.86 ns</td><td>58.33 ns</td>
+</tr><tr><td>DiffWordsMultipleTimesSortedDict</td><td>3,950.7 ns</td><td>74.69 ns</td><td>83.01 ns</td>
+</tr><tr><td>DiffWordsMultipleTimesDictSort</td><td>1,369.7 ns</td><td>21.41 ns</td><td>17.88 ns</td>
+</tr></tbody></table>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>Benchmark1.BenchmarkScenario1-20231124-211748</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.13.10, Windows 11 (10.0.22621.2715/22H2/2022Update/SunValley2)
+11th Gen Intel Core i7-1165G7 2.80GHz, 1 CPU, 8 logical and 4 physical cores
+.NET SDK 7.0.403
+  [Host]     : .NET 6.0.24 (6.0.2423.51814), X64 RyuJIT AVX2 [AttachedDebugger]
+  DefaultJob : .NET 6.0.24 (6.0.2423.51814), X64 RyuJIT AVX2
+</code></pre>
+<pre><code></code></pre>
+
+<table>
+<thead><tr><th>Method                      </th><th>Mean </th><th>Error</th><th>StdDev</th>
+</tr>
+</thead><tbody><tr><td>DifferentWordsOption1</td><td>62,257.3 ns</td><td>1,235.12 ns</td><td>1,422.37 ns</td>
+</tr><tr><td>DifferentWordsOption2</td><td>406.4 ns</td><td>3.97 ns</td><td>3.52 ns</td>
+</tr><tr><td>DifferentWordsOption3</td><td>516.9 ns</td><td>27.21 ns</td><td>79.39 ns</td>
+</tr><tr><td>SameWordMultipleTimesOption1</td><td>7,037.9 ns</td><td>139.76 ns</td><td>282.33 ns</td>
+</tr><tr><td>SameWordMultipleTimesOption2</td><td>335.1 ns</td><td>3.13 ns</td><td>2.62 ns</td>
+</tr><tr><td>SameWordMultipleTimesOption3</td><td>246.6 ns</td><td>2.93 ns</td><td>2.74 ns</td>
+</tr><tr><td>DifferentWordsMultipleTimesOption1</td><td>67,308.1 ns</td><td>1,015.03 ns</td><td>949.46 ns</td>
+</tr><tr><td>DifferentWordsMultipleTimesOption2</td><td>1,900.8 ns</td><td>22.99 ns</td><td>21.51 ns</td>
+</tr><tr><td>DifferentWordsMultipleTimesOption3</td><td>1,393.2 ns</td><td>9.09 ns</td><td>8.06 ns</td>
+</tr></tbody></table>
+</body>
+</html>

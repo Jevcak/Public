@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>Benchmark1.BC1-20231123-192423</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.13.10, Windows 11 (10.0.22621.2428/22H2/2022Update/SunValley2)
+11th Gen Intel Core i7-1165G7 2.80GHz, 1 CPU, 8 logical and 4 physical cores
+.NET SDK 7.0.403
+  [Host]     : .NET 6.0.24 (6.0.2423.51814), X64 RyuJIT AVX2 [AttachedDebugger]
+  DefaultJob : .NET 6.0.24 (6.0.2423.51814), X64 RyuJIT AVX2
+</code></pre>
+<pre><code></code></pre>
+
+<table>
+<thead><tr><th>Method                      </th><th>Mean </th><th>Error</th><th>StdDev</th><th>Median</th>
+</tr>
+</thead><tbody><tr><td>DifferentWordsOption1</td><td>62,398.0 ns</td><td>387.78 ns</td><td>362.73 ns</td><td>62,571.1 ns</td>
+</tr><tr><td>DifferentWordsOption2</td><td>418.4 ns</td><td>2.56 ns</td><td>2.27 ns</td><td>417.3 ns</td>
+</tr><tr><td>DifferentWordsOption3</td><td>416.1 ns</td><td>5.32 ns</td><td>4.97 ns</td><td>414.1 ns</td>
+</tr><tr><td>SameWordMultipleTimesOption1</td><td>6,467.3 ns</td><td>94.30 ns</td><td>78.74 ns</td><td>6,464.4 ns</td>
+</tr><tr><td>SameWordMultipleTimesOption2</td><td>329.2 ns</td><td>6.57 ns</td><td>14.95 ns</td><td>323.2 ns</td>
+</tr><tr><td>SameWordMultipleTimesOption3</td><td>235.4 ns</td><td>4.74 ns</td><td>5.82 ns</td><td>234.1 ns</td>
+</tr><tr><td>DifferentWordsMultipleTimesOption1</td><td>65,148.8 ns</td><td>1,282.79 ns</td><td>1,259.87 ns</td><td>64,929.6 ns</td>
+</tr><tr><td>DifferentWordsMultipleTimesOption2</td><td>1,824.3 ns</td><td>36.12 ns</td><td>40.15 ns</td><td>1,821.1 ns</td>
+</tr><tr><td>DifferentWordsMultipleTimesOption3</td><td>1,334.2 ns</td><td>26.48 ns</td><td>33.49 ns</td><td>1,335.1 ns</td>
+</tr></tbody></table>
+</body>
+</html>
