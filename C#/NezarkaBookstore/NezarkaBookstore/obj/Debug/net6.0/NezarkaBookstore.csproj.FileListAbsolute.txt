@@ -1,0 +1,14 @@
+C:\Users\START\Desktop\Public\C#\NezarkaBookstore\NezarkaBookstore\bin\Debug\net6.0\NezarkaBookstore.exe
+C:\Users\START\Desktop\Public\C#\NezarkaBookstore\NezarkaBookstore\bin\Debug\net6.0\NezarkaBookstore.deps.json
+C:\Users\START\Desktop\Public\C#\NezarkaBookstore\NezarkaBookstore\bin\Debug\net6.0\NezarkaBookstore.runtimeconfig.json
+C:\Users\START\Desktop\Public\C#\NezarkaBookstore\NezarkaBookstore\bin\Debug\net6.0\NezarkaBookstore.dll
+C:\Users\START\Desktop\Public\C#\NezarkaBookstore\NezarkaBookstore\bin\Debug\net6.0\NezarkaBookstore.pdb
+C:\Users\START\Desktop\Public\C#\NezarkaBookstore\NezarkaBookstore\obj\Debug\net6.0\NezarkaBookstore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\START\Desktop\Public\C#\NezarkaBookstore\NezarkaBookstore\obj\Debug\net6.0\NezarkaBookstore.AssemblyInfoInputs.cache
+C:\Users\START\Desktop\Public\C#\NezarkaBookstore\NezarkaBookstore\obj\Debug\net6.0\NezarkaBookstore.AssemblyInfo.cs
+C:\Users\START\Desktop\Public\C#\NezarkaBookstore\NezarkaBookstore\obj\Debug\net6.0\NezarkaBookstore.csproj.CoreCompileInputs.cache
+C:\Users\START\Desktop\Public\C#\NezarkaBookstore\NezarkaBookstore\obj\Debug\net6.0\NezarkaBookstore.dll
+C:\Users\START\Desktop\Public\C#\NezarkaBookstore\NezarkaBookstore\obj\Debug\net6.0\refint\NezarkaBookstore.dll
+C:\Users\START\Desktop\Public\C#\NezarkaBookstore\NezarkaBookstore\obj\Debug\net6.0\NezarkaBookstore.pdb
+C:\Users\START\Desktop\Public\C#\NezarkaBookstore\NezarkaBookstore\obj\Debug\net6.0\NezarkaBookstore.genruntimeconfig.cache
+C:\Users\START\Desktop\Public\C#\NezarkaBookstore\NezarkaBookstore\obj\Debug\net6.0\ref\NezarkaBookstore.dll
