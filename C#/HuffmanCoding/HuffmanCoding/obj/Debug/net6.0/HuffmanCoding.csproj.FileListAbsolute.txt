@@ -1,0 +1,15 @@
+C:\Users\START\Desktop\Public\C#\HuffmanCoding\HuffmanCoding\bin\Debug\net6.0\HuffmanCoding.exe
+C:\Users\START\Desktop\Public\C#\HuffmanCoding\HuffmanCoding\bin\Debug\net6.0\HuffmanCoding.deps.json
+C:\Users\START\Desktop\Public\C#\HuffmanCoding\HuffmanCoding\bin\Debug\net6.0\HuffmanCoding.runtimeconfig.json
+C:\Users\START\Desktop\Public\C#\HuffmanCoding\HuffmanCoding\bin\Debug\net6.0\HuffmanCoding.dll
+C:\Users\START\Desktop\Public\C#\HuffmanCoding\HuffmanCoding\bin\Debug\net6.0\HuffmanCoding.pdb
+C:\Users\START\Desktop\Public\C#\HuffmanCoding\HuffmanCoding\obj\Debug\net6.0\HuffmanCoding.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\START\Desktop\Public\C#\HuffmanCoding\HuffmanCoding\obj\Debug\net6.0\HuffmanCoding.AssemblyInfoInputs.cache
+C:\Users\START\Desktop\Public\C#\HuffmanCoding\HuffmanCoding\obj\Debug\net6.0\HuffmanCoding.AssemblyInfo.cs
+C:\Users\START\Desktop\Public\C#\HuffmanCoding\HuffmanCoding\obj\Debug\net6.0\HuffmanCoding.csproj.CoreCompileInputs.cache
+C:\Users\START\Desktop\Public\C#\HuffmanCoding\HuffmanCoding\obj\Debug\net6.0\HuffmanCoding.dll
+C:\Users\START\Desktop\Public\C#\HuffmanCoding\HuffmanCoding\obj\Debug\net6.0\refint\HuffmanCoding.dll
+C:\Users\START\Desktop\Public\C#\HuffmanCoding\HuffmanCoding\obj\Debug\net6.0\HuffmanCoding.pdb
+C:\Users\START\Desktop\Public\C#\HuffmanCoding\HuffmanCoding\obj\Debug\net6.0\HuffmanCoding.genruntimeconfig.cache
+C:\Users\START\Desktop\Public\C#\HuffmanCoding\HuffmanCoding\obj\Debug\net6.0\ref\HuffmanCoding.dll
+C:\Users\START\Desktop\Public\C#\HuffmanCoding\HuffmanCoding\bin\Debug\net6.0\HuffmanTest.txt
