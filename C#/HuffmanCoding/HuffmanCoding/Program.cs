@@ -22,6 +22,7 @@ namespace HuffmanCoding
             {
                 var byteReader = new ByteReader(fileName);
                 var treePrefixWriter = new TreePrefixWriter(Console.Out);
+                var encodedWriter = new HuffmanEncodedWriter(Console.Out);
                 //better use long instead of int next time
                 // and using list = long[256]
                 var frequencyList = new long[256];
@@ -40,6 +41,7 @@ namespace HuffmanCoding
                 //Build a Huffman from the dictionary
                 var huffmanTree = new HuffmanTree();
                 huffmanTree.BuildTree(frequencyList);
+                encodedWriter!.EncodeAndWrite(huffmanTree.root, huffmanTree.root);
                 treePrefixWriter!.WriteTreeInPrefixNotation(huffmanTree.root, huffmanTree.root);
                 treePrefixWriter.Dispose();
                 byteReader?.Dispose();
@@ -51,7 +53,18 @@ namespace HuffmanCoding
             }
         }
     }
-
+    public interface Encoder
+    {
+        public byte[] Encode(HuffmanNode node);
+    }
+    public struct Bytes
+    {
+        public byte[] bytes { get; }
+        public Bytes(byte[] bytes)
+        {
+            this.bytes = bytes;
+        }
+    }
     public abstract class HuffmanNode
     {
         public long weight { get; set; }
@@ -212,5 +225,37 @@ namespace HuffmanCoding
             writer!.Dispose();
         }
 
+    }
+    public class HuffmanEncoder : Encoder
+    {
+        public byte[] Encode(HuffmanNode node)
+        {
+            byte[] var = new byte[2] {0,0 };
+            return var;
+        }
+    }
+    public class HuffmanEncodedWriter : TextWriter
+    {
+        private TextWriter? writer;
+        //coz takhle napsat si struct na to
+        private Bytes header = new Bytes(new byte[8] { 0x7B, 0x68, 0x75, 0x7C, 0x6D, 0x7D, 0x66,0x66});
+        public override Encoding Encoding => writer!.Encoding;
+        public HuffmanEncodedWriter(TextWriter writer)
+        {
+            this.writer = writer;
+        }
+        public void EncodeAndWrite(HuffmanNode node, HuffmanNode root)
+        {
+            //writer!.Write(header);
+            Write(header);
+        }
+        public void Write(Bytes b)
+        {
+            byte[] n = new byte[1] { 0x7B};
+            for (int i = 0; i < 1; i++)
+            {
+                writer!.Write(n[0].ToString());
+            }
+        }
     }
 }
