@@ -22,9 +22,11 @@ namespace HuffmanCoding
             {
                 var byteReader = new ByteReader(fileName);
                 var treePrefixWriter = new TreePrefixWriter(Console.Out);
-                var frequencyDictionary = new Dictionary<byte, int>();
+                //better use long instead of int next time
+                // and using list = long[256]
+                var frequencyList = new long[256];
+                Array.Fill(frequencyList, 0);
                 byteReader!.InitializeFileReader();
-
                 byte b = byteReader!.ReadNextByte();
                 //If there is an empty file write nothing and return
                 if (byteReader.GetFileSize() == 0)
@@ -32,14 +34,12 @@ namespace HuffmanCoding
                 //While there is something in the file get it into the frequency dictionary
                 while (!byteReader.EOF)
                 {
-                    _ = frequencyDictionary.TryGetValue(b, out int value);
-                    value++;
-                    frequencyDictionary[b] = value;
+                    frequencyList[b] = frequencyList[b] + 1;
                     b = byteReader!.ReadNextByte();
                 }
                 //Build a Huffman from the dictionary
                 var huffmanTree = new HuffmanTree();
-                huffmanTree.BuildTree(frequencyDictionary);
+                huffmanTree.BuildTree(frequencyList);
                 treePrefixWriter!.WriteTreeInPrefixNotation(huffmanTree.root, huffmanTree.root);
                 treePrefixWriter.Dispose();
                 byteReader?.Dispose();
@@ -52,37 +52,42 @@ namespace HuffmanCoding
         }
     }
 
-    public class HuffmanNode
+    public abstract class HuffmanNode
     {
-        public byte symbol { get; set; }
-        public int weight { get; set; }
-        public bool leaf;
+        public long weight { get; set; }
         public int time;
+        public abstract string GetID();
+    }
+    public class HuffmanInnerNode : HuffmanNode
+    {
         public HuffmanNode? left { get; set; }
         public HuffmanNode? right { get; set; }
-        public HuffmanNode(int w, HuffmanNode? leftChild, HuffmanNode? rightChild, int t)
+        public HuffmanInnerNode(long w, HuffmanNode? leftChild, HuffmanNode? rightChild, int t)
         {
             weight = w;
             left = leftChild;
             right = rightChild;
-            leaf = false;
             time = t;
         }
-        public HuffmanNode(byte character, int w)
+        public override string GetID()
+        {
+            return weight.ToString();
+        }
+    }
+    public class HuffmanLeaf : HuffmanNode
+    {
+        public byte symbol { get; set; }
+
+        public HuffmanLeaf(byte character, long w)
         {
             symbol = character;
             weight = w;
-            leaf = true;
             time = -1;
         }
-        public string GetID()
+        public override string GetID()
         {
-            if (this.leaf)
-                return string.Format("*{0}:{1}", (int)symbol, weight);
-            else
-                return weight.ToString();
+            return string.Format("*{0}:{1}", (long)symbol, weight);
         }
-
     }
 
     public class HuffmanNodeComparator : IComparer<HuffmanNode>
@@ -93,15 +98,15 @@ namespace HuffmanCoding
             {
                 return x.weight.CompareTo(y.weight);
             }
-            else if (x.leaf && y.leaf)
+            else if (x is HuffmanLeaf && y is HuffmanLeaf)
             {
-                return x.symbol.CompareTo(y.symbol);
+                return ((HuffmanLeaf)x).symbol.CompareTo(((HuffmanLeaf)y).symbol);
             }
-            else if (x.leaf)
+            else if (x is HuffmanLeaf)
             {
                 return -1;
             }
-            else if (y.leaf)
+            else if (y is HuffmanLeaf)
             {
                 return 1;
             }
@@ -111,20 +116,20 @@ namespace HuffmanCoding
 
     public class HuffmanTree
     {
-        public HuffmanNode root { get; set; } = new HuffmanNode(0, 0);
+        public HuffmanNode root { get; set; } = new HuffmanLeaf(0, 0);
 
-        public void BuildTree(Dictionary<byte, int> frequencyDictionary)
+        public void BuildTree(long[] frequencyDictionary)
         {
-            if (frequencyDictionary.Count < 1)
-                return;
-
             var minHeap = new PriorityQueue<HuffmanNode, HuffmanNode>(new HuffmanNodeComparator());
             int time = 0;
             //prepare a forest of single leaf nodes, make a minimal heap according to the priority
-            foreach (var item in frequencyDictionary)
+            for (int i = 0; i < 256; i++)
             {
-                var newLeaf = new HuffmanNode(item.Key, item.Value);
-                minHeap.Enqueue(newLeaf, newLeaf);
+                if (frequencyDictionary[i] != 0)
+                {
+                    var newLeaf = new HuffmanLeaf((byte)i, frequencyDictionary[i]);
+                    minHeap.Enqueue(newLeaf, newLeaf);
+                }
             }
             //while it is a forest merge the high priority nodes
             while (minHeap.Count > 1)
@@ -132,7 +137,7 @@ namespace HuffmanCoding
                 var leftChild = minHeap.Dequeue();
                 var rightChild = minHeap.Dequeue();
 
-                var mergedNode = new HuffmanNode(leftChild.weight + rightChild.weight, leftChild, rightChild, ++time);
+                var mergedNode = new HuffmanInnerNode(leftChild.weight + rightChild.weight, leftChild, rightChild, ++time);
                 minHeap.Enqueue(mergedNode, mergedNode);
             }
 
@@ -190,11 +195,11 @@ namespace HuffmanCoding
                 writer!.Write(" ");
             }
             string nodeID = node.GetID();
-            if (!node.leaf)
+            if (node is HuffmanInnerNode)
             {
                 writer!.Write(nodeID);
-                WriteTreeInPrefixNotation(node.left!, root);
-                WriteTreeInPrefixNotation(node.right!, root);
+                WriteTreeInPrefixNotation(((HuffmanInnerNode)node).left!, root);
+                WriteTreeInPrefixNotation(((HuffmanInnerNode)node).right!, root);
             }
             else
             {
