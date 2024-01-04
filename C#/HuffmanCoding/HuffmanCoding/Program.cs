@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using System.Xml.Linq;
 
 #nullable enable
 
@@ -20,13 +21,13 @@ namespace HuffmanCoding
             string fileName = args[0];
             try
             {
+                byte[] header = new byte[] { 0x7B, 0x68, 0x75, 0x7C, 0x6D, 0x7D, 0x66, 0x66 };
+                byte[] end = new byte[8] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+                var fout = new BinaryWriter(File.Open(args[0] + ".huff", FileMode.Create, FileAccess.Write));
                 var byteReader = new ByteReader(fileName);
                 var treePrefixWriter = new TreePrefixWriter(Console.Out);
                 var encodedWriter = new HuffmanEncodedWriter(Console.Out);
-                //better use long instead of int next time
-                // and using list = long[256]
-                var frequencyList = new long[256];
-                Array.Fill(frequencyList, 0);
+                var frequencyList = new ulong[256];
                 byteReader!.InitializeFileReader();
                 byte b = byteReader!.ReadNextByte();
                 //If there is an empty file write nothing and return
@@ -67,7 +68,7 @@ namespace HuffmanCoding
     }
     public abstract class HuffmanNode
     {
-        public long weight { get; set; }
+        public ulong weight { get; set; }
         public int time;
         public abstract string GetID();
     }
@@ -75,7 +76,7 @@ namespace HuffmanCoding
     {
         public HuffmanNode? left { get; set; }
         public HuffmanNode? right { get; set; }
-        public HuffmanInnerNode(long w, HuffmanNode? leftChild, HuffmanNode? rightChild, int t)
+        public HuffmanInnerNode(ulong w, HuffmanNode? leftChild, HuffmanNode? rightChild, int t)
         {
             weight = w;
             left = leftChild;
@@ -91,7 +92,7 @@ namespace HuffmanCoding
     {
         public byte symbol { get; set; }
 
-        public HuffmanLeaf(byte character, long w)
+        public HuffmanLeaf(byte character, ulong w)
         {
             symbol = character;
             weight = w;
@@ -99,7 +100,7 @@ namespace HuffmanCoding
         }
         public override string GetID()
         {
-            return string.Format("*{0}:{1}", (long)symbol, weight);
+            return string.Format("*{0}:{1}", (ulong)symbol, weight);
         }
     }
 
@@ -131,7 +132,7 @@ namespace HuffmanCoding
     {
         public HuffmanNode root { get; set; } = new HuffmanLeaf(0, 0);
 
-        public void BuildTree(long[] frequencyDictionary)
+        public void BuildTree(ulong[] frequencyDictionary)
         {
             var minHeap = new PriorityQueue<HuffmanNode, HuffmanNode>(new HuffmanNodeComparator());
             int time = 0;
@@ -167,9 +168,9 @@ namespace HuffmanCoding
         {
             fileName = path;
         }
-        public long GetFileSize()
+        public ulong GetFileSize()
         {
-            return reader!.Length;
+            return (ulong)reader!.Length;
         }
         public void InitializeFileReader()
         {
@@ -233,12 +234,25 @@ namespace HuffmanCoding
             byte[] var = new byte[2] {0,0 };
             return var;
         }
+        ulong encodeInnerNode(HuffmanInnerNode node)
+        {
+            ulong result = node.weight;
+            result <<= 1;
+            result &= 0x00fffffffffffffe;
+            return result;
+        }
+        ulong encodeLeafNode(HuffmanLeaf node)
+        {
+            ulong result = node.weight;
+            result <<= 1;
+            result |= 0xff00000000000001;
+            result &= ~(~(ulong)node.symbol << 56);
+            return result;
+        }
     }
     public class HuffmanEncodedWriter : TextWriter
     {
         private TextWriter? writer;
-        //coz takhle napsat si struct na to
-        private Bytes header = new Bytes(new byte[8] { 0x7B, 0x68, 0x75, 0x7C, 0x6D, 0x7D, 0x66,0x66});
         public override Encoding Encoding => writer!.Encoding;
         public HuffmanEncodedWriter(TextWriter writer)
         {
@@ -246,16 +260,6 @@ namespace HuffmanCoding
         }
         public void EncodeAndWrite(HuffmanNode node, HuffmanNode root)
         {
-            //writer!.Write(header);
-            Write(header);
-        }
-        public void Write(Bytes b)
-        {
-            byte[] n = new byte[1] { 0x7B};
-            for (int i = 0; i < 1; i++)
-            {
-                writer!.Write(n[0].ToString());
-            }
         }
     }
 }
