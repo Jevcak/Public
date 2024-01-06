@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Excel", "Excel\Excel.csproj", "{135C3140-7A28-406A-84D4-F5F58A2BF885}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelTesting", "ExcelTesting\ExcelTesting.csproj", "{BCE7E406-81FC-4BE9-95C9-CC0452B8A4A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{135C3140-7A28-406A-84D4-F5F58A2BF885}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{135C3140-7A28-406A-84D4-F5F58A2BF885}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{135C3140-7A28-406A-84D4-F5F58A2BF885}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCE7E406-81FC-4BE9-95C9-CC0452B8A4A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCE7E406-81FC-4BE9-95C9-CC0452B8A4A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCE7E406-81FC-4BE9-95C9-CC0452B8A4A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCE7E406-81FC-4BE9-95C9-CC0452B8A4A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
