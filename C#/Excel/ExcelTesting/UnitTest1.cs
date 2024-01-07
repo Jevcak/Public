@@ -177,5 +177,20 @@ namespace ExcelTesting
             //Assert
             Assert.Equal(expOutReader.ReadToEnd(), writer.ToString());
         }
+        [Fact]
+        public void TestTableInvValDiv0()
+        {
+            //Arrange
+            string inputFile = "C:\\Users\\START\\Desktop\\MFF\\Zimní semestr - 2.roèník\\C#\\Excel-data\\InputInvValDiv0.txt";
+            string expectedOutput = "C:\\Users\\START\\Desktop\\MFF\\Zimní semestr - 2.roèník\\C#\\Excel-data\\OutputInvValDiv0.txt";
+            StreamReader expOutReader = new StreamReader(expectedOutput);
+            StreamReader reader = new StreamReader(inputFile);
+            var writer = new StringWriter();
+            //Act
+            var ProgramExecutor = new ProgramExecutor(new StreamReader(inputFile), writer);
+            ProgramExecutor.Run();
+            //Assert
+            Assert.Equal(expOutReader.ReadToEnd(), writer.ToString());
+        }
     }
 }

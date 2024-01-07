@@ -1,3 +1,2 @@
-[] #CYCLE
-#CYCLE #CYCLE
-#ERROR
+0
+0

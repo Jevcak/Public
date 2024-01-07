@@ -75,7 +75,7 @@ namespace Excel
                             {
                                 (newTable.table[i])[j] = new ErrorCell(((EquationCell)tempCell).err!, tempCell.table!);
                             }
-                                int k = 0;
+                            int k = 0;
                             if (tempCell.GetValue(ref k))
                                 (newTable.table[i])[j] = new ValueCell(k, tempCell.table!);
                             else (newTable.table[i])[j] = new ErrorCell(((EquationCell)tempCell).err!, tempCell.table!);
@@ -289,7 +289,6 @@ namespace Excel
             }
             if (!this.onCycle)
             {
-
                 string res = Evaluate();
                 if (int.TryParse(res, out int r))
                 {
@@ -316,34 +315,85 @@ namespace Excel
             var rightCoor = GetCoordinates(right);
             int l = -1;
             int r = -1;
-            //Check boundaries
-            if(leftCoor.row >= table!.table.Count || rightCoor.row >= table!.table.Count)
+            if ((leftCoor.row > table!.table.Count || leftCoor.col > table!.table[leftCoor.row].Count) & (rightCoor.row > table!.table.Count || rightCoor.col > table!.table[rightCoor.row].Count))
             {
-                return "#FORMULA";
+                eval = true;
+                if (operation=='/')
+                {
+                    return "#DIV0";
+                }
+                else
+                {
+                    value = 0;
+                    return value.ToString();
+                }
             }
-            else if (leftCoor.col >= table!.table[leftCoor.row].Count || rightCoor.col >= table!.table[rightCoor.row].Count)
+            else if (rightCoor.row > table!.table.Count || rightCoor.col > table!.table[rightCoor.row].Count)
             {
-                return "#FORMULA";
+                eval = true;
+                _ = (table!.table[leftCoor.row])[leftCoor.col].GetValue(ref l);
+                switch (operation)
+                {
+                    case '+':
+                        value = l;
+                        return value.ToString();
+                    case '-':
+                        value = l;
+                        return value.ToString();
+                    case '*':
+                        value = 0;
+                        return value.ToString();
+                    case '/':
+                        return "#DIV0";
+                    default:
+                        return "#FORMULA";
+                }
             }
-            if ((table!.table[leftCoor.row])[leftCoor.col].GetValue(ref l) & ((table!.table[rightCoor.row])[rightCoor.col].GetValue(ref r)))
+            else if (leftCoor.row > table!.table.Count || leftCoor.col > table!.table[leftCoor.row].Count)
+            {
+                eval = true;
+                _ = ((table!.table[rightCoor.row])[rightCoor.col].GetValue(ref r));
+                switch (operation)
+                {
+                    case '+':
+                        value = r;
+                        return value.ToString();
+                    case '-':
+                        value = -r;
+                        return value.ToString();
+                    case '*':
+                        value = 0;
+                        return value.ToString();
+                    case '/':
+                        if (r != 0)
+                        {
+                            value = 0;
+                            return value.ToString();
+                        }
+                        else return "#DIV0";
+                    default:
+                        return "#FORMULA";
+                }
+            }
+            else if ((table!.table[leftCoor.row])[leftCoor.col].GetValue(ref l) & ((table!.table[rightCoor.row])[rightCoor.col].GetValue(ref r)))
             {
                 eval = true;
                 switch (operation)
                 {
                     case '+':
                         value = l + r;
-                        return (l + r).ToString();
+                        return value.ToString();
                     case '-':
                         value = l - r;
-                        return (l - r).ToString();
+                        return value.ToString();
                     case '*':
                         value = l * r;
-                        return (l * r).ToString();
+                        return value.ToString();
                     case '/':
                         if (r != 0)
                         {
                             value = l / r;
-                            return (l / r).ToString();
+                            return value.ToString();
                         }
                         else return "#DIV0";
                     default:
