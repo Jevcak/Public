@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressionEvaluation", "ExpressionEvaluation\ExpressionEvaluation.csproj", "{62E4F946-F8EF-4903-B105-9754989DBD3E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpEvalTesty", "ExpEvalTesty\ExpEvalTesty.csproj", "{4D9A478F-2812-4AAB-BF26-4454C68926D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{62E4F946-F8EF-4903-B105-9754989DBD3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62E4F946-F8EF-4903-B105-9754989DBD3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62E4F946-F8EF-4903-B105-9754989DBD3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D9A478F-2812-4AAB-BF26-4454C68926D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D9A478F-2812-4AAB-BF26-4454C68926D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D9A478F-2812-4AAB-BF26-4454C68926D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D9A478F-2812-4AAB-BF26-4454C68926D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

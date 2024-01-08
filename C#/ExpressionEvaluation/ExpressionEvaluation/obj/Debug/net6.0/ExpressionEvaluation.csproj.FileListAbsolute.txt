@@ -1,0 +1,14 @@
+C:\Users\START\Desktop\Public\C#\ExpressionEvaluation\ExpressionEvaluation\bin\Debug\net6.0\ExpressionEvaluation.exe
+C:\Users\START\Desktop\Public\C#\ExpressionEvaluation\ExpressionEvaluation\bin\Debug\net6.0\ExpressionEvaluation.deps.json
+C:\Users\START\Desktop\Public\C#\ExpressionEvaluation\ExpressionEvaluation\bin\Debug\net6.0\ExpressionEvaluation.runtimeconfig.json
+C:\Users\START\Desktop\Public\C#\ExpressionEvaluation\ExpressionEvaluation\bin\Debug\net6.0\ExpressionEvaluation.dll
+C:\Users\START\Desktop\Public\C#\ExpressionEvaluation\ExpressionEvaluation\bin\Debug\net6.0\ExpressionEvaluation.pdb
+C:\Users\START\Desktop\Public\C#\ExpressionEvaluation\ExpressionEvaluation\obj\Debug\net6.0\ExpressionEvaluation.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\START\Desktop\Public\C#\ExpressionEvaluation\ExpressionEvaluation\obj\Debug\net6.0\ExpressionEvaluation.AssemblyInfoInputs.cache
+C:\Users\START\Desktop\Public\C#\ExpressionEvaluation\ExpressionEvaluation\obj\Debug\net6.0\ExpressionEvaluation.AssemblyInfo.cs
+C:\Users\START\Desktop\Public\C#\ExpressionEvaluation\ExpressionEvaluation\obj\Debug\net6.0\ExpressionEvaluation.csproj.CoreCompileInputs.cache
+C:\Users\START\Desktop\Public\C#\ExpressionEvaluation\ExpressionEvaluation\obj\Debug\net6.0\ExpressionEvaluation.dll
+C:\Users\START\Desktop\Public\C#\ExpressionEvaluation\ExpressionEvaluation\obj\Debug\net6.0\refint\ExpressionEvaluation.dll
+C:\Users\START\Desktop\Public\C#\ExpressionEvaluation\ExpressionEvaluation\obj\Debug\net6.0\ExpressionEvaluation.pdb
+C:\Users\START\Desktop\Public\C#\ExpressionEvaluation\ExpressionEvaluation\obj\Debug\net6.0\ExpressionEvaluation.genruntimeconfig.cache
+C:\Users\START\Desktop\Public\C#\ExpressionEvaluation\ExpressionEvaluation\obj\Debug\net6.0\ref\ExpressionEvaluation.dll
