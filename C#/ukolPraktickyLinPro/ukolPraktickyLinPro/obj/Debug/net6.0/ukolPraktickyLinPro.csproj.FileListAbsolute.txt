@@ -1,0 +1,14 @@
+C:\Users\START\Desktop\Public\C#\ukolPraktickyLinPro\ukolPraktickyLinPro\bin\Debug\net6.0\ukolPraktickyLinPro.exe
+C:\Users\START\Desktop\Public\C#\ukolPraktickyLinPro\ukolPraktickyLinPro\bin\Debug\net6.0\ukolPraktickyLinPro.deps.json
+C:\Users\START\Desktop\Public\C#\ukolPraktickyLinPro\ukolPraktickyLinPro\bin\Debug\net6.0\ukolPraktickyLinPro.runtimeconfig.json
+C:\Users\START\Desktop\Public\C#\ukolPraktickyLinPro\ukolPraktickyLinPro\bin\Debug\net6.0\ukolPraktickyLinPro.dll
+C:\Users\START\Desktop\Public\C#\ukolPraktickyLinPro\ukolPraktickyLinPro\bin\Debug\net6.0\ukolPraktickyLinPro.pdb
+C:\Users\START\Desktop\Public\C#\ukolPraktickyLinPro\ukolPraktickyLinPro\obj\Debug\net6.0\ukolPraktickyLinPro.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\START\Desktop\Public\C#\ukolPraktickyLinPro\ukolPraktickyLinPro\obj\Debug\net6.0\ukolPraktickyLinPro.AssemblyInfoInputs.cache
+C:\Users\START\Desktop\Public\C#\ukolPraktickyLinPro\ukolPraktickyLinPro\obj\Debug\net6.0\ukolPraktickyLinPro.AssemblyInfo.cs
+C:\Users\START\Desktop\Public\C#\ukolPraktickyLinPro\ukolPraktickyLinPro\obj\Debug\net6.0\ukolPraktickyLinPro.csproj.CoreCompileInputs.cache
+C:\Users\START\Desktop\Public\C#\ukolPraktickyLinPro\ukolPraktickyLinPro\obj\Debug\net6.0\ukolPraktickyLinPro.dll
+C:\Users\START\Desktop\Public\C#\ukolPraktickyLinPro\ukolPraktickyLinPro\obj\Debug\net6.0\refint\ukolPraktickyLinPro.dll
+C:\Users\START\Desktop\Public\C#\ukolPraktickyLinPro\ukolPraktickyLinPro\obj\Debug\net6.0\ukolPraktickyLinPro.pdb
+C:\Users\START\Desktop\Public\C#\ukolPraktickyLinPro\ukolPraktickyLinPro\obj\Debug\net6.0\ukolPraktickyLinPro.genruntimeconfig.cache
+C:\Users\START\Desktop\Public\C#\ukolPraktickyLinPro\ukolPraktickyLinPro\obj\Debug\net6.0\ref\ukolPraktickyLinPro.dll
