@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ukolPraktickyLinPro", "ukolPraktickyLinPro\ukolPraktickyLinPro.csproj", "{EA431724-3699-42C1-9F78-82CB5FE80247}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingFesting", "TestingFesting\TestingFesting.csproj", "{03B60596-6F0B-470C-8B0E-A5907D2A3D29}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{EA431724-3699-42C1-9F78-82CB5FE80247}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA431724-3699-42C1-9F78-82CB5FE80247}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA431724-3699-42C1-9F78-82CB5FE80247}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03B60596-6F0B-470C-8B0E-A5907D2A3D29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03B60596-6F0B-470C-8B0E-A5907D2A3D29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03B60596-6F0B-470C-8B0E-A5907D2A3D29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03B60596-6F0B-470C-8B0E-A5907D2A3D29}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
